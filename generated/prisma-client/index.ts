@@ -16,6 +16,8 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
+  friend: (where?: FriendWhereInput) => Promise<boolean>;
+  hero: (where?: HeroWhereInput) => Promise<boolean>;
   post: (where?: PostWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
@@ -39,6 +41,44 @@ export interface Prisma {
    * Queries
    */
 
+  friend: (where: FriendWhereUniqueInput) => FriendNullablePromise;
+  friends: (args?: {
+    where?: FriendWhereInput;
+    orderBy?: FriendOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Friend>;
+  friendsConnection: (args?: {
+    where?: FriendWhereInput;
+    orderBy?: FriendOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FriendConnectionPromise;
+  hero: (where: HeroWhereUniqueInput) => HeroNullablePromise;
+  heroes: (args?: {
+    where?: HeroWhereInput;
+    orderBy?: HeroOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Hero>;
+  heroesConnection: (args?: {
+    where?: HeroWhereInput;
+    orderBy?: HeroOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => HeroConnectionPromise;
   post: (where: PostWhereUniqueInput) => PostNullablePromise;
   posts: (args?: {
     where?: PostWhereInput;
@@ -83,6 +123,38 @@ export interface Prisma {
    * Mutations
    */
 
+  createFriend: (data: FriendCreateInput) => FriendPromise;
+  updateFriend: (args: {
+    data: FriendUpdateInput;
+    where: FriendWhereUniqueInput;
+  }) => FriendPromise;
+  updateManyFriends: (args: {
+    data: FriendUpdateManyMutationInput;
+    where?: FriendWhereInput;
+  }) => BatchPayloadPromise;
+  upsertFriend: (args: {
+    where: FriendWhereUniqueInput;
+    create: FriendCreateInput;
+    update: FriendUpdateInput;
+  }) => FriendPromise;
+  deleteFriend: (where: FriendWhereUniqueInput) => FriendPromise;
+  deleteManyFriends: (where?: FriendWhereInput) => BatchPayloadPromise;
+  createHero: (data: HeroCreateInput) => HeroPromise;
+  updateHero: (args: {
+    data: HeroUpdateInput;
+    where: HeroWhereUniqueInput;
+  }) => HeroPromise;
+  updateManyHeroes: (args: {
+    data: HeroUpdateManyMutationInput;
+    where?: HeroWhereInput;
+  }) => BatchPayloadPromise;
+  upsertHero: (args: {
+    where: HeroWhereUniqueInput;
+    create: HeroCreateInput;
+    update: HeroUpdateInput;
+  }) => HeroPromise;
+  deleteHero: (where: HeroWhereUniqueInput) => HeroPromise;
+  deleteManyHeroes: (where?: HeroWhereInput) => BatchPayloadPromise;
   createPost: (data: PostCreateInput) => PostPromise;
   updatePost: (args: {
     data: PostUpdateInput;
@@ -124,6 +196,12 @@ export interface Prisma {
 }
 
 export interface Subscription {
+  friend: (
+    where?: FriendSubscriptionWhereInput
+  ) => FriendSubscriptionPayloadSubscription;
+  hero: (
+    where?: HeroSubscriptionWhereInput
+  ) => HeroSubscriptionPayloadSubscription;
   post: (
     where?: PostSubscriptionWhereInput
   ) => PostSubscriptionPayloadSubscription;
@@ -139,6 +217,14 @@ export interface ClientConstructor<T> {
 /**
  * Types
  */
+
+export type FriendOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC";
+
+export type HeroOrderByInput = "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC";
 
 export type PostOrderByInput =
   | "id_ASC"
@@ -157,6 +243,86 @@ export type UserOrderByInput =
   | "name_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
+export type FriendWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface FriendWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  partner?: Maybe<HeroWhereInput>;
+  AND?: Maybe<FriendWhereInput[] | FriendWhereInput>;
+  OR?: Maybe<FriendWhereInput[] | FriendWhereInput>;
+  NOT?: Maybe<FriendWhereInput[] | FriendWhereInput>;
+}
+
+export interface HeroWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  friends_every?: Maybe<FriendWhereInput>;
+  friends_some?: Maybe<FriendWhereInput>;
+  friends_none?: Maybe<FriendWhereInput>;
+  AND?: Maybe<HeroWhereInput[] | HeroWhereInput>;
+  OR?: Maybe<HeroWhereInput[] | HeroWhereInput>;
+  NOT?: Maybe<HeroWhereInput[] | HeroWhereInput>;
+}
+
+export type HeroWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export type PostWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
@@ -254,6 +420,157 @@ export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
   email?: Maybe<String>;
 }>;
+
+export interface FriendCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  partner?: Maybe<HeroCreateOneWithoutFriendsInput>;
+}
+
+export interface HeroCreateOneWithoutFriendsInput {
+  create?: Maybe<HeroCreateWithoutFriendsInput>;
+  connect?: Maybe<HeroWhereUniqueInput>;
+}
+
+export interface HeroCreateWithoutFriendsInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+}
+
+export interface FriendUpdateInput {
+  name?: Maybe<String>;
+  partner?: Maybe<HeroUpdateOneWithoutFriendsInput>;
+}
+
+export interface HeroUpdateOneWithoutFriendsInput {
+  create?: Maybe<HeroCreateWithoutFriendsInput>;
+  update?: Maybe<HeroUpdateWithoutFriendsDataInput>;
+  upsert?: Maybe<HeroUpsertWithoutFriendsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<HeroWhereUniqueInput>;
+}
+
+export interface HeroUpdateWithoutFriendsDataInput {
+  name?: Maybe<String>;
+}
+
+export interface HeroUpsertWithoutFriendsInput {
+  update: HeroUpdateWithoutFriendsDataInput;
+  create: HeroCreateWithoutFriendsInput;
+}
+
+export interface FriendUpdateManyMutationInput {
+  name?: Maybe<String>;
+}
+
+export interface HeroCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  friends?: Maybe<FriendCreateManyWithoutPartnerInput>;
+}
+
+export interface FriendCreateManyWithoutPartnerInput {
+  create?: Maybe<
+    FriendCreateWithoutPartnerInput[] | FriendCreateWithoutPartnerInput
+  >;
+  connect?: Maybe<FriendWhereUniqueInput[] | FriendWhereUniqueInput>;
+}
+
+export interface FriendCreateWithoutPartnerInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+}
+
+export interface HeroUpdateInput {
+  name?: Maybe<String>;
+  friends?: Maybe<FriendUpdateManyWithoutPartnerInput>;
+}
+
+export interface FriendUpdateManyWithoutPartnerInput {
+  create?: Maybe<
+    FriendCreateWithoutPartnerInput[] | FriendCreateWithoutPartnerInput
+  >;
+  delete?: Maybe<FriendWhereUniqueInput[] | FriendWhereUniqueInput>;
+  connect?: Maybe<FriendWhereUniqueInput[] | FriendWhereUniqueInput>;
+  set?: Maybe<FriendWhereUniqueInput[] | FriendWhereUniqueInput>;
+  disconnect?: Maybe<FriendWhereUniqueInput[] | FriendWhereUniqueInput>;
+  update?: Maybe<
+    | FriendUpdateWithWhereUniqueWithoutPartnerInput[]
+    | FriendUpdateWithWhereUniqueWithoutPartnerInput
+  >;
+  upsert?: Maybe<
+    | FriendUpsertWithWhereUniqueWithoutPartnerInput[]
+    | FriendUpsertWithWhereUniqueWithoutPartnerInput
+  >;
+  deleteMany?: Maybe<FriendScalarWhereInput[] | FriendScalarWhereInput>;
+  updateMany?: Maybe<
+    | FriendUpdateManyWithWhereNestedInput[]
+    | FriendUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface FriendUpdateWithWhereUniqueWithoutPartnerInput {
+  where: FriendWhereUniqueInput;
+  data: FriendUpdateWithoutPartnerDataInput;
+}
+
+export interface FriendUpdateWithoutPartnerDataInput {
+  name?: Maybe<String>;
+}
+
+export interface FriendUpsertWithWhereUniqueWithoutPartnerInput {
+  where: FriendWhereUniqueInput;
+  update: FriendUpdateWithoutPartnerDataInput;
+  create: FriendCreateWithoutPartnerInput;
+}
+
+export interface FriendScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  AND?: Maybe<FriendScalarWhereInput[] | FriendScalarWhereInput>;
+  OR?: Maybe<FriendScalarWhereInput[] | FriendScalarWhereInput>;
+  NOT?: Maybe<FriendScalarWhereInput[] | FriendScalarWhereInput>;
+}
+
+export interface FriendUpdateManyWithWhereNestedInput {
+  where: FriendScalarWhereInput;
+  data: FriendUpdateManyDataInput;
+}
+
+export interface FriendUpdateManyDataInput {
+  name?: Maybe<String>;
+}
+
+export interface HeroUpdateManyMutationInput {
+  name?: Maybe<String>;
+}
 
 export interface PostCreateInput {
   id?: Maybe<ID_Input>;
@@ -414,6 +731,28 @@ export interface UserUpdateManyMutationInput {
   name?: Maybe<String>;
 }
 
+export interface FriendSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<FriendWhereInput>;
+  AND?: Maybe<FriendSubscriptionWhereInput[] | FriendSubscriptionWhereInput>;
+  OR?: Maybe<FriendSubscriptionWhereInput[] | FriendSubscriptionWhereInput>;
+  NOT?: Maybe<FriendSubscriptionWhereInput[] | FriendSubscriptionWhereInput>;
+}
+
+export interface HeroSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<HeroWhereInput>;
+  AND?: Maybe<HeroSubscriptionWhereInput[] | HeroSubscriptionWhereInput>;
+  OR?: Maybe<HeroSubscriptionWhereInput[] | HeroSubscriptionWhereInput>;
+  NOT?: Maybe<HeroSubscriptionWhereInput[] | HeroSubscriptionWhereInput>;
+}
+
 export interface PostSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -438,6 +777,215 @@ export interface UserSubscriptionWhereInput {
 
 export interface NodeNode {
   id: ID_Output;
+}
+
+export interface Friend {
+  id: ID_Output;
+  name: String;
+}
+
+export interface FriendPromise extends Promise<Friend>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  partner: <T = HeroPromise>() => T;
+}
+
+export interface FriendSubscription
+  extends Promise<AsyncIterator<Friend>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  partner: <T = HeroSubscription>() => T;
+}
+
+export interface FriendNullablePromise
+  extends Promise<Friend | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  partner: <T = HeroPromise>() => T;
+}
+
+export interface Hero {
+  id: ID_Output;
+  name: String;
+}
+
+export interface HeroPromise extends Promise<Hero>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  friends: <T = FragmentableArray<Friend>>(args?: {
+    where?: FriendWhereInput;
+    orderBy?: FriendOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface HeroSubscription
+  extends Promise<AsyncIterator<Hero>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  friends: <T = Promise<AsyncIterator<FriendSubscription>>>(args?: {
+    where?: FriendWhereInput;
+    orderBy?: FriendOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface HeroNullablePromise
+  extends Promise<Hero | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  friends: <T = FragmentableArray<Friend>>(args?: {
+    where?: FriendWhereInput;
+    orderBy?: FriendOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface FriendConnection {
+  pageInfo: PageInfo;
+  edges: FriendEdge[];
+}
+
+export interface FriendConnectionPromise
+  extends Promise<FriendConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<FriendEdge>>() => T;
+  aggregate: <T = AggregateFriendPromise>() => T;
+}
+
+export interface FriendConnectionSubscription
+  extends Promise<AsyncIterator<FriendConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<FriendEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateFriendSubscription>() => T;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface FriendEdge {
+  node: Friend;
+  cursor: String;
+}
+
+export interface FriendEdgePromise extends Promise<FriendEdge>, Fragmentable {
+  node: <T = FriendPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface FriendEdgeSubscription
+  extends Promise<AsyncIterator<FriendEdge>>,
+    Fragmentable {
+  node: <T = FriendSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateFriend {
+  count: Int;
+}
+
+export interface AggregateFriendPromise
+  extends Promise<AggregateFriend>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateFriendSubscription
+  extends Promise<AsyncIterator<AggregateFriend>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface HeroConnection {
+  pageInfo: PageInfo;
+  edges: HeroEdge[];
+}
+
+export interface HeroConnectionPromise
+  extends Promise<HeroConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<HeroEdge>>() => T;
+  aggregate: <T = AggregateHeroPromise>() => T;
+}
+
+export interface HeroConnectionSubscription
+  extends Promise<AsyncIterator<HeroConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HeroEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHeroSubscription>() => T;
+}
+
+export interface HeroEdge {
+  node: Hero;
+  cursor: String;
+}
+
+export interface HeroEdgePromise extends Promise<HeroEdge>, Fragmentable {
+  node: <T = HeroPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface HeroEdgeSubscription
+  extends Promise<AsyncIterator<HeroEdge>>,
+    Fragmentable {
+  node: <T = HeroSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateHero {
+  count: Int;
+}
+
+export interface AggregateHeroPromise
+  extends Promise<AggregateHero>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateHeroSubscription
+  extends Promise<AsyncIterator<AggregateHero>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface Post {
@@ -547,29 +1095,6 @@ export interface PostConnectionSubscription
   aggregate: <T = AggregatePostSubscription>() => T;
 }
 
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface PostEdge {
   node: Post;
   cursor: String;
@@ -671,6 +1196,94 @@ export interface BatchPayloadSubscription
   extends Promise<AsyncIterator<BatchPayload>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface FriendSubscriptionPayload {
+  mutation: MutationType;
+  node: Friend;
+  updatedFields: String[];
+  previousValues: FriendPreviousValues;
+}
+
+export interface FriendSubscriptionPayloadPromise
+  extends Promise<FriendSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = FriendPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = FriendPreviousValuesPromise>() => T;
+}
+
+export interface FriendSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<FriendSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = FriendSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = FriendPreviousValuesSubscription>() => T;
+}
+
+export interface FriendPreviousValues {
+  id: ID_Output;
+  name: String;
+}
+
+export interface FriendPreviousValuesPromise
+  extends Promise<FriendPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface FriendPreviousValuesSubscription
+  extends Promise<AsyncIterator<FriendPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+}
+
+export interface HeroSubscriptionPayload {
+  mutation: MutationType;
+  node: Hero;
+  updatedFields: String[];
+  previousValues: HeroPreviousValues;
+}
+
+export interface HeroSubscriptionPayloadPromise
+  extends Promise<HeroSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = HeroPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = HeroPreviousValuesPromise>() => T;
+}
+
+export interface HeroSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<HeroSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = HeroSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = HeroPreviousValuesSubscription>() => T;
+}
+
+export interface HeroPreviousValues {
+  id: ID_Output;
+  name: String;
+}
+
+export interface HeroPreviousValuesPromise
+  extends Promise<HeroPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface HeroPreviousValuesSubscription
+  extends Promise<AsyncIterator<HeroPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PostSubscriptionPayload {
@@ -779,14 +1392,14 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
-
-/*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
 */
 export type Int = number;
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
 
 export type Long = string;
 
@@ -801,6 +1414,14 @@ export const models: Model[] = [
   },
   {
     name: "Post",
+    embedded: false
+  },
+  {
+    name: "Hero",
+    embedded: false
+  },
+  {
+    name: "Friend",
     embedded: false
   }
 ];

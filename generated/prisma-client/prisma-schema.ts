@@ -2,7 +2,15 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregatePost {
+export const typeDefs = /* GraphQL */ `type AggregateFriend {
+  count: Int!
+}
+
+type AggregateHero {
+  count: Int!
+}
+
+type AggregatePost {
   count: Int!
 }
 
@@ -14,9 +22,333 @@ type BatchPayload {
   count: Long!
 }
 
+type Friend {
+  id: ID!
+  name: String!
+  partner: Hero
+}
+
+type FriendConnection {
+  pageInfo: PageInfo!
+  edges: [FriendEdge]!
+  aggregate: AggregateFriend!
+}
+
+input FriendCreateInput {
+  id: ID
+  name: String!
+  partner: HeroCreateOneWithoutFriendsInput
+}
+
+input FriendCreateManyWithoutPartnerInput {
+  create: [FriendCreateWithoutPartnerInput!]
+  connect: [FriendWhereUniqueInput!]
+}
+
+input FriendCreateWithoutPartnerInput {
+  id: ID
+  name: String!
+}
+
+type FriendEdge {
+  node: Friend!
+  cursor: String!
+}
+
+enum FriendOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+}
+
+type FriendPreviousValues {
+  id: ID!
+  name: String!
+}
+
+input FriendScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [FriendScalarWhereInput!]
+  OR: [FriendScalarWhereInput!]
+  NOT: [FriendScalarWhereInput!]
+}
+
+type FriendSubscriptionPayload {
+  mutation: MutationType!
+  node: Friend
+  updatedFields: [String!]
+  previousValues: FriendPreviousValues
+}
+
+input FriendSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: FriendWhereInput
+  AND: [FriendSubscriptionWhereInput!]
+  OR: [FriendSubscriptionWhereInput!]
+  NOT: [FriendSubscriptionWhereInput!]
+}
+
+input FriendUpdateInput {
+  name: String
+  partner: HeroUpdateOneWithoutFriendsInput
+}
+
+input FriendUpdateManyDataInput {
+  name: String
+}
+
+input FriendUpdateManyMutationInput {
+  name: String
+}
+
+input FriendUpdateManyWithoutPartnerInput {
+  create: [FriendCreateWithoutPartnerInput!]
+  delete: [FriendWhereUniqueInput!]
+  connect: [FriendWhereUniqueInput!]
+  set: [FriendWhereUniqueInput!]
+  disconnect: [FriendWhereUniqueInput!]
+  update: [FriendUpdateWithWhereUniqueWithoutPartnerInput!]
+  upsert: [FriendUpsertWithWhereUniqueWithoutPartnerInput!]
+  deleteMany: [FriendScalarWhereInput!]
+  updateMany: [FriendUpdateManyWithWhereNestedInput!]
+}
+
+input FriendUpdateManyWithWhereNestedInput {
+  where: FriendScalarWhereInput!
+  data: FriendUpdateManyDataInput!
+}
+
+input FriendUpdateWithoutPartnerDataInput {
+  name: String
+}
+
+input FriendUpdateWithWhereUniqueWithoutPartnerInput {
+  where: FriendWhereUniqueInput!
+  data: FriendUpdateWithoutPartnerDataInput!
+}
+
+input FriendUpsertWithWhereUniqueWithoutPartnerInput {
+  where: FriendWhereUniqueInput!
+  update: FriendUpdateWithoutPartnerDataInput!
+  create: FriendCreateWithoutPartnerInput!
+}
+
+input FriendWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  partner: HeroWhereInput
+  AND: [FriendWhereInput!]
+  OR: [FriendWhereInput!]
+  NOT: [FriendWhereInput!]
+}
+
+input FriendWhereUniqueInput {
+  id: ID
+}
+
+type Hero {
+  id: ID!
+  name: String!
+  friends(where: FriendWhereInput, orderBy: FriendOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Friend!]
+}
+
+type HeroConnection {
+  pageInfo: PageInfo!
+  edges: [HeroEdge]!
+  aggregate: AggregateHero!
+}
+
+input HeroCreateInput {
+  id: ID
+  name: String!
+  friends: FriendCreateManyWithoutPartnerInput
+}
+
+input HeroCreateOneWithoutFriendsInput {
+  create: HeroCreateWithoutFriendsInput
+  connect: HeroWhereUniqueInput
+}
+
+input HeroCreateWithoutFriendsInput {
+  id: ID
+  name: String!
+}
+
+type HeroEdge {
+  node: Hero!
+  cursor: String!
+}
+
+enum HeroOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+}
+
+type HeroPreviousValues {
+  id: ID!
+  name: String!
+}
+
+type HeroSubscriptionPayload {
+  mutation: MutationType!
+  node: Hero
+  updatedFields: [String!]
+  previousValues: HeroPreviousValues
+}
+
+input HeroSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: HeroWhereInput
+  AND: [HeroSubscriptionWhereInput!]
+  OR: [HeroSubscriptionWhereInput!]
+  NOT: [HeroSubscriptionWhereInput!]
+}
+
+input HeroUpdateInput {
+  name: String
+  friends: FriendUpdateManyWithoutPartnerInput
+}
+
+input HeroUpdateManyMutationInput {
+  name: String
+}
+
+input HeroUpdateOneWithoutFriendsInput {
+  create: HeroCreateWithoutFriendsInput
+  update: HeroUpdateWithoutFriendsDataInput
+  upsert: HeroUpsertWithoutFriendsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: HeroWhereUniqueInput
+}
+
+input HeroUpdateWithoutFriendsDataInput {
+  name: String
+}
+
+input HeroUpsertWithoutFriendsInput {
+  update: HeroUpdateWithoutFriendsDataInput!
+  create: HeroCreateWithoutFriendsInput!
+}
+
+input HeroWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  friends_every: FriendWhereInput
+  friends_some: FriendWhereInput
+  friends_none: FriendWhereInput
+  AND: [HeroWhereInput!]
+  OR: [HeroWhereInput!]
+  NOT: [HeroWhereInput!]
+}
+
+input HeroWhereUniqueInput {
+  id: ID
+}
+
 scalar Long
 
 type Mutation {
+  createFriend(data: FriendCreateInput!): Friend!
+  updateFriend(data: FriendUpdateInput!, where: FriendWhereUniqueInput!): Friend
+  updateManyFriends(data: FriendUpdateManyMutationInput!, where: FriendWhereInput): BatchPayload!
+  upsertFriend(where: FriendWhereUniqueInput!, create: FriendCreateInput!, update: FriendUpdateInput!): Friend!
+  deleteFriend(where: FriendWhereUniqueInput!): Friend
+  deleteManyFriends(where: FriendWhereInput): BatchPayload!
+  createHero(data: HeroCreateInput!): Hero!
+  updateHero(data: HeroUpdateInput!, where: HeroWhereUniqueInput!): Hero
+  updateManyHeroes(data: HeroUpdateManyMutationInput!, where: HeroWhereInput): BatchPayload!
+  upsertHero(where: HeroWhereUniqueInput!, create: HeroCreateInput!, update: HeroUpdateInput!): Hero!
+  deleteHero(where: HeroWhereUniqueInput!): Hero
+  deleteManyHeroes(where: HeroWhereInput): BatchPayload!
   createPost(data: PostCreateInput!): Post!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
@@ -244,6 +576,12 @@ input PostWhereUniqueInput {
 }
 
 type Query {
+  friend(where: FriendWhereUniqueInput!): Friend
+  friends(where: FriendWhereInput, orderBy: FriendOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Friend]!
+  friendsConnection(where: FriendWhereInput, orderBy: FriendOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FriendConnection!
+  hero(where: HeroWhereUniqueInput!): Hero
+  heroes(where: HeroWhereInput, orderBy: HeroOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hero]!
+  heroesConnection(where: HeroWhereInput, orderBy: HeroOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HeroConnection!
   post(where: PostWhereUniqueInput!): Post
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
@@ -254,6 +592,8 @@ type Query {
 }
 
 type Subscription {
+  friend(where: FriendSubscriptionWhereInput): FriendSubscriptionPayload
+  hero(where: HeroSubscriptionWhereInput): HeroSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
