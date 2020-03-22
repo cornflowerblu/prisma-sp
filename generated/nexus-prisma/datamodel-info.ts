@@ -10,7 +10,7 @@ export default {
     Post: ['id'],
     Hero: ['id'],
     Friend: ['id'],
-    Client: ['id'],
+    Client: ['id', 'clientId'],
     Position: ['id', 'code']
   },
   embeddedTypes: [],
@@ -5492,6 +5492,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "clientId",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null

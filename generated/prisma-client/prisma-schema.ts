@@ -411,6 +411,7 @@ input ClientWhereInput {
 
 input ClientWhereUniqueInput {
   id: ID
+  clientId: String
 }
 
 type Friend {

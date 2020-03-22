@@ -395,6 +395,7 @@ export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export type ClientWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  clientId?: Maybe<String>;
 }>;
 
 export interface PositionWhereInput {

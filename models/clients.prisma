@@ -7,12 +7,12 @@ type Client {
     city: String!
     stateRef: State! @relation(link: INLINE)
     zipCode: String!
-    positions: [Position!]!
+    positions: [Position!]! @relation(name: "ClientPositions")
 }
 
 type Position {
     id: ID! @id
     code: ID! @unique
     name: String!
-    clientRef: [Client!]!
+    clientRef: [Client!]! @relation(name: "ClientPositions")
 }

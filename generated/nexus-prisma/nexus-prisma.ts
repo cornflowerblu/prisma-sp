@@ -4263,10 +4263,12 @@ export type FriendWhereUniqueInputInputObject =
   
 export interface ClientWhereUniqueInput {
   id?: string | null
+  clientId?: string | null
 }
 export type ClientWhereUniqueInputInputObject =
   | Extract<keyof ClientWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'clientId', alias?: string  } 
   
 export interface PositionWhereInput {
   id?: string | null
