@@ -1,0 +1,11 @@
+type Hero {
+  id: ID! @id
+  name: String!
+  friends: [Friend!]!
+}
+
+type Friend {
+  id: ID! @id
+  name: String!
+  partner: Hero @relation(link: INLINE)
+}
