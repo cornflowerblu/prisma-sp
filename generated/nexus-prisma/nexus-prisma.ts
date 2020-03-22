@@ -5195,7 +5195,7 @@ export interface ClientCreateInput {
   city?: string
   stateRef?: StateCreateOneInput
   zipCode?: string
-  active?: boolean
+  active?: boolean | null
   positions?: PositionCreateManyWithoutClientRefInput | null
 }
 export type ClientCreateInputInputObject =
@@ -5509,7 +5509,7 @@ export interface ClientCreateWithoutPositionsInput {
   city?: string
   stateRef?: StateCreateOneInput
   zipCode?: string
-  active?: boolean
+  active?: boolean | null
 }
 export type ClientCreateWithoutPositionsInputInputObject =
   | Extract<keyof ClientCreateWithoutPositionsInput, string>

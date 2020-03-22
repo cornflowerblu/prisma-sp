@@ -225,7 +225,8 @@ input PositionWhereInput {
 }
 
 type Query {
-  allClients: [Client!]!
+  activeClients: [Client!]!
+  allClients: [Client!]
   client(where: ClientWhereUniqueInput!): Client
 }
 

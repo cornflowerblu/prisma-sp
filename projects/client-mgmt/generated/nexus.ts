@@ -289,7 +289,8 @@ export interface NexusGenFieldTypes {
     name: string; // String!
   }
   Query: { // field return type
-    allClients: NexusGenRootTypes['Client'][]; // [Client!]!
+    activeClients: NexusGenRootTypes['Client'][]; // [Client!]!
+    allClients: NexusGenRootTypes['Client'][] | null; // [Client!]
     client: NexusGenRootTypes['Client'] | null; // Client
   }
   State: { // field return type

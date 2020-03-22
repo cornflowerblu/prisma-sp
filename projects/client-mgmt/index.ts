@@ -11,9 +11,16 @@ const Query = prismaObjectType<'Query'>({
     t.prismaFields(['client'])
     t.list.field('allClients', {
       type: 'Client',
+      nullable: true,
       resolve: (_, args, ctx) =>
         ctx.prisma.clients(),
     })
+    t.prismaFields(['client'])
+    t.list.field('activeClients', {
+      type: 'Client',
+      resolve: (_, args, ctx) =>
+        ctx.prisma.clients({where: {active: true } }),
+    })    
   },
 })
 
