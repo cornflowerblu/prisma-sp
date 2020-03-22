@@ -8,10 +8,9 @@ services:
     environment:
       PRISMA_CONFIG: |
         port: 4466
-        # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
-        # managementApiSecret: my-secret
+        managementApiSecret: ${PRISMA_MGMT_KEY}
         databases:
-          default:
+          development:
             connector: postgres
             host: prisma-2-instance-1.cxqiy9guhvym.us-west-2.rds.amazonaws.com
             database: ru_prisma_1
