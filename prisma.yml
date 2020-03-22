@@ -1,7 +1,9 @@
 endpoint: http://localhost:4466/platform/dev
 datamodel: 
+  - ./models/utils.prisma
   - ./models/blog.prisma
   - ./models/heroes.prisma
+  - ./models/clients.prisma
 
 generate:
   - generator: typescript-client

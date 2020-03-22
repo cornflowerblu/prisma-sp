@@ -1,0 +1,5 @@
+type State {
+    id: ID! @id
+    name: String!
+    abbreviation: String!
+}

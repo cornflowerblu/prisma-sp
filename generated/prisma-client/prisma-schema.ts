@@ -2,7 +2,11 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregateFriend {
+export const typeDefs = /* GraphQL */ `type AggregateClient {
+  count: Int!
+}
+
+type AggregateFriend {
   count: Int!
 }
 
@@ -10,7 +14,15 @@ type AggregateHero {
   count: Int!
 }
 
+type AggregatePosition {
+  count: Int!
+}
+
 type AggregatePost {
+  count: Int!
+}
+
+type AggregateState {
   count: Int!
 }
 
@@ -20,6 +32,386 @@ type AggregateUser {
 
 type BatchPayload {
   count: Long!
+}
+
+type Client {
+  id: ID!
+  clientId: String!
+  name: String!
+  dba: String
+  address: String!
+  city: String!
+  stateRef: State!
+  zipCode: String!
+  positions(where: PositionWhereInput, orderBy: PositionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Position!]
+}
+
+type ClientConnection {
+  pageInfo: PageInfo!
+  edges: [ClientEdge]!
+  aggregate: AggregateClient!
+}
+
+input ClientCreateInput {
+  id: ID
+  clientId: String!
+  name: String!
+  dba: String
+  address: String!
+  city: String!
+  stateRef: StateCreateOneInput!
+  zipCode: String!
+  positions: PositionCreateManyWithoutClientRefInput
+}
+
+input ClientCreateManyWithoutPositionsInput {
+  create: [ClientCreateWithoutPositionsInput!]
+  connect: [ClientWhereUniqueInput!]
+}
+
+input ClientCreateWithoutPositionsInput {
+  id: ID
+  clientId: String!
+  name: String!
+  dba: String
+  address: String!
+  city: String!
+  stateRef: StateCreateOneInput!
+  zipCode: String!
+}
+
+type ClientEdge {
+  node: Client!
+  cursor: String!
+}
+
+enum ClientOrderByInput {
+  id_ASC
+  id_DESC
+  clientId_ASC
+  clientId_DESC
+  name_ASC
+  name_DESC
+  dba_ASC
+  dba_DESC
+  address_ASC
+  address_DESC
+  city_ASC
+  city_DESC
+  zipCode_ASC
+  zipCode_DESC
+}
+
+type ClientPreviousValues {
+  id: ID!
+  clientId: String!
+  name: String!
+  dba: String
+  address: String!
+  city: String!
+  zipCode: String!
+}
+
+input ClientScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  clientId: String
+  clientId_not: String
+  clientId_in: [String!]
+  clientId_not_in: [String!]
+  clientId_lt: String
+  clientId_lte: String
+  clientId_gt: String
+  clientId_gte: String
+  clientId_contains: String
+  clientId_not_contains: String
+  clientId_starts_with: String
+  clientId_not_starts_with: String
+  clientId_ends_with: String
+  clientId_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  dba: String
+  dba_not: String
+  dba_in: [String!]
+  dba_not_in: [String!]
+  dba_lt: String
+  dba_lte: String
+  dba_gt: String
+  dba_gte: String
+  dba_contains: String
+  dba_not_contains: String
+  dba_starts_with: String
+  dba_not_starts_with: String
+  dba_ends_with: String
+  dba_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  city: String
+  city_not: String
+  city_in: [String!]
+  city_not_in: [String!]
+  city_lt: String
+  city_lte: String
+  city_gt: String
+  city_gte: String
+  city_contains: String
+  city_not_contains: String
+  city_starts_with: String
+  city_not_starts_with: String
+  city_ends_with: String
+  city_not_ends_with: String
+  zipCode: String
+  zipCode_not: String
+  zipCode_in: [String!]
+  zipCode_not_in: [String!]
+  zipCode_lt: String
+  zipCode_lte: String
+  zipCode_gt: String
+  zipCode_gte: String
+  zipCode_contains: String
+  zipCode_not_contains: String
+  zipCode_starts_with: String
+  zipCode_not_starts_with: String
+  zipCode_ends_with: String
+  zipCode_not_ends_with: String
+  AND: [ClientScalarWhereInput!]
+  OR: [ClientScalarWhereInput!]
+  NOT: [ClientScalarWhereInput!]
+}
+
+type ClientSubscriptionPayload {
+  mutation: MutationType!
+  node: Client
+  updatedFields: [String!]
+  previousValues: ClientPreviousValues
+}
+
+input ClientSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ClientWhereInput
+  AND: [ClientSubscriptionWhereInput!]
+  OR: [ClientSubscriptionWhereInput!]
+  NOT: [ClientSubscriptionWhereInput!]
+}
+
+input ClientUpdateInput {
+  clientId: String
+  name: String
+  dba: String
+  address: String
+  city: String
+  stateRef: StateUpdateOneRequiredInput
+  zipCode: String
+  positions: PositionUpdateManyWithoutClientRefInput
+}
+
+input ClientUpdateManyDataInput {
+  clientId: String
+  name: String
+  dba: String
+  address: String
+  city: String
+  zipCode: String
+}
+
+input ClientUpdateManyMutationInput {
+  clientId: String
+  name: String
+  dba: String
+  address: String
+  city: String
+  zipCode: String
+}
+
+input ClientUpdateManyWithoutPositionsInput {
+  create: [ClientCreateWithoutPositionsInput!]
+  delete: [ClientWhereUniqueInput!]
+  connect: [ClientWhereUniqueInput!]
+  set: [ClientWhereUniqueInput!]
+  disconnect: [ClientWhereUniqueInput!]
+  update: [ClientUpdateWithWhereUniqueWithoutPositionsInput!]
+  upsert: [ClientUpsertWithWhereUniqueWithoutPositionsInput!]
+  deleteMany: [ClientScalarWhereInput!]
+  updateMany: [ClientUpdateManyWithWhereNestedInput!]
+}
+
+input ClientUpdateManyWithWhereNestedInput {
+  where: ClientScalarWhereInput!
+  data: ClientUpdateManyDataInput!
+}
+
+input ClientUpdateWithoutPositionsDataInput {
+  clientId: String
+  name: String
+  dba: String
+  address: String
+  city: String
+  stateRef: StateUpdateOneRequiredInput
+  zipCode: String
+}
+
+input ClientUpdateWithWhereUniqueWithoutPositionsInput {
+  where: ClientWhereUniqueInput!
+  data: ClientUpdateWithoutPositionsDataInput!
+}
+
+input ClientUpsertWithWhereUniqueWithoutPositionsInput {
+  where: ClientWhereUniqueInput!
+  update: ClientUpdateWithoutPositionsDataInput!
+  create: ClientCreateWithoutPositionsInput!
+}
+
+input ClientWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  clientId: String
+  clientId_not: String
+  clientId_in: [String!]
+  clientId_not_in: [String!]
+  clientId_lt: String
+  clientId_lte: String
+  clientId_gt: String
+  clientId_gte: String
+  clientId_contains: String
+  clientId_not_contains: String
+  clientId_starts_with: String
+  clientId_not_starts_with: String
+  clientId_ends_with: String
+  clientId_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  dba: String
+  dba_not: String
+  dba_in: [String!]
+  dba_not_in: [String!]
+  dba_lt: String
+  dba_lte: String
+  dba_gt: String
+  dba_gte: String
+  dba_contains: String
+  dba_not_contains: String
+  dba_starts_with: String
+  dba_not_starts_with: String
+  dba_ends_with: String
+  dba_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  city: String
+  city_not: String
+  city_in: [String!]
+  city_not_in: [String!]
+  city_lt: String
+  city_lte: String
+  city_gt: String
+  city_gte: String
+  city_contains: String
+  city_not_contains: String
+  city_starts_with: String
+  city_not_starts_with: String
+  city_ends_with: String
+  city_not_ends_with: String
+  stateRef: StateWhereInput
+  zipCode: String
+  zipCode_not: String
+  zipCode_in: [String!]
+  zipCode_not_in: [String!]
+  zipCode_lt: String
+  zipCode_lte: String
+  zipCode_gt: String
+  zipCode_gte: String
+  zipCode_contains: String
+  zipCode_not_contains: String
+  zipCode_starts_with: String
+  zipCode_not_starts_with: String
+  zipCode_ends_with: String
+  zipCode_not_ends_with: String
+  positions_every: PositionWhereInput
+  positions_some: PositionWhereInput
+  positions_none: PositionWhereInput
+  AND: [ClientWhereInput!]
+  OR: [ClientWhereInput!]
+  NOT: [ClientWhereInput!]
+}
+
+input ClientWhereUniqueInput {
+  id: ID
+  clientId: String
 }
 
 type Friend {
@@ -337,6 +729,12 @@ input HeroWhereUniqueInput {
 scalar Long
 
 type Mutation {
+  createClient(data: ClientCreateInput!): Client!
+  updateClient(data: ClientUpdateInput!, where: ClientWhereUniqueInput!): Client
+  updateManyClients(data: ClientUpdateManyMutationInput!, where: ClientWhereInput): BatchPayload!
+  upsertClient(where: ClientWhereUniqueInput!, create: ClientCreateInput!, update: ClientUpdateInput!): Client!
+  deleteClient(where: ClientWhereUniqueInput!): Client
+  deleteManyClients(where: ClientWhereInput): BatchPayload!
   createFriend(data: FriendCreateInput!): Friend!
   updateFriend(data: FriendUpdateInput!, where: FriendWhereUniqueInput!): Friend
   updateManyFriends(data: FriendUpdateManyMutationInput!, where: FriendWhereInput): BatchPayload!
@@ -349,12 +747,24 @@ type Mutation {
   upsertHero(where: HeroWhereUniqueInput!, create: HeroCreateInput!, update: HeroUpdateInput!): Hero!
   deleteHero(where: HeroWhereUniqueInput!): Hero
   deleteManyHeroes(where: HeroWhereInput): BatchPayload!
+  createPosition(data: PositionCreateInput!): Position!
+  updatePosition(data: PositionUpdateInput!, where: PositionWhereUniqueInput!): Position
+  updateManyPositions(data: PositionUpdateManyMutationInput!, where: PositionWhereInput): BatchPayload!
+  upsertPosition(where: PositionWhereUniqueInput!, create: PositionCreateInput!, update: PositionUpdateInput!): Position!
+  deletePosition(where: PositionWhereUniqueInput!): Position
+  deleteManyPositions(where: PositionWhereInput): BatchPayload!
   createPost(data: PostCreateInput!): Post!
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
   upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
   deletePost(where: PostWhereUniqueInput!): Post
   deleteManyPosts(where: PostWhereInput): BatchPayload!
+  createState(data: StateCreateInput!): State!
+  updateState(data: StateUpdateInput!, where: StateWhereUniqueInput!): State
+  updateManyStates(data: StateUpdateManyMutationInput!, where: StateWhereInput): BatchPayload!
+  upsertState(where: StateWhereUniqueInput!, create: StateCreateInput!, update: StateUpdateInput!): State!
+  deleteState(where: StateWhereUniqueInput!): State
+  deleteManyStates(where: StateWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -378,6 +788,228 @@ type PageInfo {
   hasPreviousPage: Boolean!
   startCursor: String
   endCursor: String
+}
+
+type Position {
+  id: ID!
+  code: ID!
+  name: String!
+  clientRef(where: ClientWhereInput, orderBy: ClientOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Client!]
+}
+
+type PositionConnection {
+  pageInfo: PageInfo!
+  edges: [PositionEdge]!
+  aggregate: AggregatePosition!
+}
+
+input PositionCreateInput {
+  id: ID
+  code: ID!
+  name: String!
+  clientRef: ClientCreateManyWithoutPositionsInput
+}
+
+input PositionCreateManyWithoutClientRefInput {
+  create: [PositionCreateWithoutClientRefInput!]
+  connect: [PositionWhereUniqueInput!]
+}
+
+input PositionCreateWithoutClientRefInput {
+  id: ID
+  code: ID!
+  name: String!
+}
+
+type PositionEdge {
+  node: Position!
+  cursor: String!
+}
+
+enum PositionOrderByInput {
+  id_ASC
+  id_DESC
+  code_ASC
+  code_DESC
+  name_ASC
+  name_DESC
+}
+
+type PositionPreviousValues {
+  id: ID!
+  code: ID!
+  name: String!
+}
+
+input PositionScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  code: ID
+  code_not: ID
+  code_in: [ID!]
+  code_not_in: [ID!]
+  code_lt: ID
+  code_lte: ID
+  code_gt: ID
+  code_gte: ID
+  code_contains: ID
+  code_not_contains: ID
+  code_starts_with: ID
+  code_not_starts_with: ID
+  code_ends_with: ID
+  code_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [PositionScalarWhereInput!]
+  OR: [PositionScalarWhereInput!]
+  NOT: [PositionScalarWhereInput!]
+}
+
+type PositionSubscriptionPayload {
+  mutation: MutationType!
+  node: Position
+  updatedFields: [String!]
+  previousValues: PositionPreviousValues
+}
+
+input PositionSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PositionWhereInput
+  AND: [PositionSubscriptionWhereInput!]
+  OR: [PositionSubscriptionWhereInput!]
+  NOT: [PositionSubscriptionWhereInput!]
+}
+
+input PositionUpdateInput {
+  code: ID
+  name: String
+  clientRef: ClientUpdateManyWithoutPositionsInput
+}
+
+input PositionUpdateManyDataInput {
+  code: ID
+  name: String
+}
+
+input PositionUpdateManyMutationInput {
+  code: ID
+  name: String
+}
+
+input PositionUpdateManyWithoutClientRefInput {
+  create: [PositionCreateWithoutClientRefInput!]
+  delete: [PositionWhereUniqueInput!]
+  connect: [PositionWhereUniqueInput!]
+  set: [PositionWhereUniqueInput!]
+  disconnect: [PositionWhereUniqueInput!]
+  update: [PositionUpdateWithWhereUniqueWithoutClientRefInput!]
+  upsert: [PositionUpsertWithWhereUniqueWithoutClientRefInput!]
+  deleteMany: [PositionScalarWhereInput!]
+  updateMany: [PositionUpdateManyWithWhereNestedInput!]
+}
+
+input PositionUpdateManyWithWhereNestedInput {
+  where: PositionScalarWhereInput!
+  data: PositionUpdateManyDataInput!
+}
+
+input PositionUpdateWithoutClientRefDataInput {
+  code: ID
+  name: String
+}
+
+input PositionUpdateWithWhereUniqueWithoutClientRefInput {
+  where: PositionWhereUniqueInput!
+  data: PositionUpdateWithoutClientRefDataInput!
+}
+
+input PositionUpsertWithWhereUniqueWithoutClientRefInput {
+  where: PositionWhereUniqueInput!
+  update: PositionUpdateWithoutClientRefDataInput!
+  create: PositionCreateWithoutClientRefInput!
+}
+
+input PositionWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  code: ID
+  code_not: ID
+  code_in: [ID!]
+  code_not_in: [ID!]
+  code_lt: ID
+  code_lte: ID
+  code_gt: ID
+  code_gte: ID
+  code_contains: ID
+  code_not_contains: ID
+  code_starts_with: ID
+  code_not_starts_with: ID
+  code_ends_with: ID
+  code_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  clientRef_every: ClientWhereInput
+  clientRef_some: ClientWhereInput
+  clientRef_none: ClientWhereInput
+  AND: [PositionWhereInput!]
+  OR: [PositionWhereInput!]
+  NOT: [PositionWhereInput!]
+}
+
+input PositionWhereUniqueInput {
+  id: ID
+  code: ID
 }
 
 type Post {
@@ -576,25 +1208,177 @@ input PostWhereUniqueInput {
 }
 
 type Query {
+  client(where: ClientWhereUniqueInput!): Client
+  clients(where: ClientWhereInput, orderBy: ClientOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Client]!
+  clientsConnection(where: ClientWhereInput, orderBy: ClientOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ClientConnection!
   friend(where: FriendWhereUniqueInput!): Friend
   friends(where: FriendWhereInput, orderBy: FriendOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Friend]!
   friendsConnection(where: FriendWhereInput, orderBy: FriendOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FriendConnection!
   hero(where: HeroWhereUniqueInput!): Hero
   heroes(where: HeroWhereInput, orderBy: HeroOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Hero]!
   heroesConnection(where: HeroWhereInput, orderBy: HeroOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HeroConnection!
+  position(where: PositionWhereUniqueInput!): Position
+  positions(where: PositionWhereInput, orderBy: PositionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Position]!
+  positionsConnection(where: PositionWhereInput, orderBy: PositionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PositionConnection!
   post(where: PostWhereUniqueInput!): Post
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
+  state(where: StateWhereUniqueInput!): State
+  states(where: StateWhereInput, orderBy: StateOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [State]!
+  statesConnection(where: StateWhereInput, orderBy: StateOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): StateConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   node(id: ID!): Node
 }
 
+type State {
+  id: ID!
+  name: String!
+  abbreviation: String!
+}
+
+type StateConnection {
+  pageInfo: PageInfo!
+  edges: [StateEdge]!
+  aggregate: AggregateState!
+}
+
+input StateCreateInput {
+  id: ID
+  name: String!
+  abbreviation: String!
+}
+
+input StateCreateOneInput {
+  create: StateCreateInput
+  connect: StateWhereUniqueInput
+}
+
+type StateEdge {
+  node: State!
+  cursor: String!
+}
+
+enum StateOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  abbreviation_ASC
+  abbreviation_DESC
+}
+
+type StatePreviousValues {
+  id: ID!
+  name: String!
+  abbreviation: String!
+}
+
+type StateSubscriptionPayload {
+  mutation: MutationType!
+  node: State
+  updatedFields: [String!]
+  previousValues: StatePreviousValues
+}
+
+input StateSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: StateWhereInput
+  AND: [StateSubscriptionWhereInput!]
+  OR: [StateSubscriptionWhereInput!]
+  NOT: [StateSubscriptionWhereInput!]
+}
+
+input StateUpdateDataInput {
+  name: String
+  abbreviation: String
+}
+
+input StateUpdateInput {
+  name: String
+  abbreviation: String
+}
+
+input StateUpdateManyMutationInput {
+  name: String
+  abbreviation: String
+}
+
+input StateUpdateOneRequiredInput {
+  create: StateCreateInput
+  update: StateUpdateDataInput
+  upsert: StateUpsertNestedInput
+  connect: StateWhereUniqueInput
+}
+
+input StateUpsertNestedInput {
+  update: StateUpdateDataInput!
+  create: StateCreateInput!
+}
+
+input StateWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  abbreviation: String
+  abbreviation_not: String
+  abbreviation_in: [String!]
+  abbreviation_not_in: [String!]
+  abbreviation_lt: String
+  abbreviation_lte: String
+  abbreviation_gt: String
+  abbreviation_gte: String
+  abbreviation_contains: String
+  abbreviation_not_contains: String
+  abbreviation_starts_with: String
+  abbreviation_not_starts_with: String
+  abbreviation_ends_with: String
+  abbreviation_not_ends_with: String
+  AND: [StateWhereInput!]
+  OR: [StateWhereInput!]
+  NOT: [StateWhereInput!]
+}
+
+input StateWhereUniqueInput {
+  id: ID
+}
+
 type Subscription {
+  client(where: ClientSubscriptionWhereInput): ClientSubscriptionPayload
   friend(where: FriendSubscriptionWhereInput): FriendSubscriptionPayload
   hero(where: HeroSubscriptionWhereInput): HeroSubscriptionPayload
+  position(where: PositionSubscriptionWhereInput): PositionSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
+  state(where: StateSubscriptionWhereInput): StateSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
