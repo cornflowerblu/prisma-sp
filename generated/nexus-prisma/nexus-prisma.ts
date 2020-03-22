@@ -24,6 +24,14 @@ export interface NexusPrismaTypes {
       PostConnection: PostConnectionObject
       PostEdge: PostEdgeObject
       AggregatePost: AggregatePostObject
+      Hero: HeroObject
+      Friend: FriendObject
+      HeroConnection: HeroConnectionObject
+      HeroEdge: HeroEdgeObject
+      AggregateHero: AggregateHeroObject
+      FriendConnection: FriendConnectionObject
+      FriendEdge: FriendEdgeObject
+      AggregateFriend: AggregateFriendObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
@@ -31,6 +39,10 @@ export interface NexusPrismaTypes {
       UserPreviousValues: UserPreviousValuesObject
       PostSubscriptionPayload: PostSubscriptionPayloadObject
       PostPreviousValues: PostPreviousValuesObject
+      HeroSubscriptionPayload: HeroSubscriptionPayloadObject
+      HeroPreviousValues: HeroPreviousValuesObject
+      FriendSubscriptionPayload: FriendSubscriptionPayloadObject
+      FriendPreviousValues: FriendPreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
@@ -43,6 +55,14 @@ export interface NexusPrismaTypes {
       PostConnection: PostConnectionFieldDetails
       PostEdge: PostEdgeFieldDetails
       AggregatePost: AggregatePostFieldDetails
+      Hero: HeroFieldDetails
+      Friend: FriendFieldDetails
+      HeroConnection: HeroConnectionFieldDetails
+      HeroEdge: HeroEdgeFieldDetails
+      AggregateHero: AggregateHeroFieldDetails
+      FriendConnection: FriendConnectionFieldDetails
+      FriendEdge: FriendEdgeFieldDetails
+      AggregateFriend: AggregateFriendFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
@@ -50,6 +70,10 @@ export interface NexusPrismaTypes {
       UserPreviousValues: UserPreviousValuesFieldDetails
       PostSubscriptionPayload: PostSubscriptionPayloadFieldDetails
       PostPreviousValues: PostPreviousValuesFieldDetails
+      HeroSubscriptionPayload: HeroSubscriptionPayloadFieldDetails
+      HeroPreviousValues: HeroPreviousValuesFieldDetails
+      FriendSubscriptionPayload: FriendSubscriptionPayloadFieldDetails
+      FriendPreviousValues: FriendPreviousValuesFieldDetails
     }
   }
   inputTypes: {
@@ -58,6 +82,10 @@ export interface NexusPrismaTypes {
       PostWhereInput: PostWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
       PostWhereUniqueInput: PostWhereUniqueInputInputObject
+      HeroWhereUniqueInput: HeroWhereUniqueInputInputObject
+      FriendWhereInput: FriendWhereInputInputObject
+      HeroWhereInput: HeroWhereInputInputObject
+      FriendWhereUniqueInput: FriendWhereUniqueInputInputObject
       UserCreateInput: UserCreateInputInputObject
       PostCreateManyWithoutAuthorInput: PostCreateManyWithoutAuthorInputInputObject
       PostCreateWithoutAuthorInput: PostCreateWithoutAuthorInputInputObject
@@ -78,13 +106,37 @@ export interface NexusPrismaTypes {
       UserUpdateWithoutPostsDataInput: UserUpdateWithoutPostsDataInputInputObject
       UserUpsertWithoutPostsInput: UserUpsertWithoutPostsInputInputObject
       PostUpdateManyMutationInput: PostUpdateManyMutationInputInputObject
+      HeroCreateInput: HeroCreateInputInputObject
+      FriendCreateManyWithoutPartnerInput: FriendCreateManyWithoutPartnerInputInputObject
+      FriendCreateWithoutPartnerInput: FriendCreateWithoutPartnerInputInputObject
+      HeroUpdateInput: HeroUpdateInputInputObject
+      FriendUpdateManyWithoutPartnerInput: FriendUpdateManyWithoutPartnerInputInputObject
+      FriendUpdateWithWhereUniqueWithoutPartnerInput: FriendUpdateWithWhereUniqueWithoutPartnerInputInputObject
+      FriendUpdateWithoutPartnerDataInput: FriendUpdateWithoutPartnerDataInputInputObject
+      FriendUpsertWithWhereUniqueWithoutPartnerInput: FriendUpsertWithWhereUniqueWithoutPartnerInputInputObject
+      FriendScalarWhereInput: FriendScalarWhereInputInputObject
+      FriendUpdateManyWithWhereNestedInput: FriendUpdateManyWithWhereNestedInputInputObject
+      FriendUpdateManyDataInput: FriendUpdateManyDataInputInputObject
+      HeroUpdateManyMutationInput: HeroUpdateManyMutationInputInputObject
+      FriendCreateInput: FriendCreateInputInputObject
+      HeroCreateOneWithoutFriendsInput: HeroCreateOneWithoutFriendsInputInputObject
+      HeroCreateWithoutFriendsInput: HeroCreateWithoutFriendsInputInputObject
+      FriendUpdateInput: FriendUpdateInputInputObject
+      HeroUpdateOneWithoutFriendsInput: HeroUpdateOneWithoutFriendsInputInputObject
+      HeroUpdateWithoutFriendsDataInput: HeroUpdateWithoutFriendsDataInputInputObject
+      HeroUpsertWithoutFriendsInput: HeroUpsertWithoutFriendsInputInputObject
+      FriendUpdateManyMutationInput: FriendUpdateManyMutationInputInputObject
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
       PostSubscriptionWhereInput: PostSubscriptionWhereInputInputObject
+      HeroSubscriptionWhereInput: HeroSubscriptionWhereInputInputObject
+      FriendSubscriptionWhereInput: FriendSubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
     PostOrderByInput: PostOrderByInputValues,
     UserOrderByInput: UserOrderByInputValues,
+    FriendOrderByInput: FriendOrderByInputValues,
+    HeroOrderByInput: HeroOrderByInputValues,
     MutationType: MutationTypeValues,
   }
 }
@@ -99,6 +151,12 @@ type QueryObject =
   | { name: 'post', args?: QueryPostArgs[] | false, alias?: string  } 
   | { name: 'posts', args?: QueryPostsArgs[] | false, alias?: string  } 
   | { name: 'postsConnection', args?: QueryPostsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'hero', args?: QueryHeroArgs[] | false, alias?: string  } 
+  | { name: 'heroes', args?: QueryHeroesArgs[] | false, alias?: string  } 
+  | { name: 'heroesConnection', args?: QueryHeroesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'friend', args?: QueryFriendArgs[] | false, alias?: string  } 
+  | { name: 'friends', args?: QueryFriendsArgs[] | false, alias?: string  } 
+  | { name: 'friendsConnection', args?: QueryFriendsConnectionArgs[] | false, alias?: string  } 
 
 type QueryFields =
   | 'user'
@@ -107,6 +165,12 @@ type QueryFields =
   | 'post'
   | 'posts'
   | 'postsConnection'
+  | 'hero'
+  | 'heroes'
+  | 'heroesConnection'
+  | 'friend'
+  | 'friends'
+  | 'friendsConnection'
 
 
 type QueryUserArgs =
@@ -138,6 +202,42 @@ type QueryPostsArgs =
   | 'first'
   | 'last'
 type QueryPostsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryHeroArgs =
+  | 'where'
+type QueryHeroesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryHeroesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryFriendArgs =
+  | 'where'
+type QueryFriendsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryFriendsConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -225,6 +325,84 @@ export interface QueryFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PostConnection> | prisma.PostConnection
+  }
+  hero: {
+    type: 'Hero'
+    args: Record<QueryHeroArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: HeroWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Hero | null> | prisma.Hero | null
+  }
+  heroes: {
+    type: 'Hero'
+    args: Record<QueryHeroesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: HeroWhereInput | null, orderBy?: prisma.HeroOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Hero[]> | prisma.Hero[]
+  }
+  heroesConnection: {
+    type: 'HeroConnection'
+    args: Record<QueryHeroesConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: HeroWhereInput | null, orderBy?: prisma.HeroOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.HeroConnection> | prisma.HeroConnection
+  }
+  friend: {
+    type: 'Friend'
+    args: Record<QueryFriendArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: FriendWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Friend | null> | prisma.Friend | null
+  }
+  friends: {
+    type: 'Friend'
+    args: Record<QueryFriendsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: FriendWhereInput | null, orderBy?: prisma.FriendOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Friend[]> | prisma.Friend[]
+  }
+  friendsConnection: {
+    type: 'FriendConnection'
+    args: Record<QueryFriendsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: FriendWhereInput | null, orderBy?: prisma.FriendOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.FriendConnection> | prisma.FriendConnection
   }
 }
   
@@ -661,6 +839,363 @@ export interface AggregatePostFieldDetails {
 }
   
 
+// Types for Hero
+
+type HeroObject =
+  | HeroFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'friends', args?: HeroFriendsArgs[] | false, alias?: string  } 
+
+type HeroFields =
+  | 'id'
+  | 'name'
+  | 'friends'
+
+
+type HeroFriendsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface HeroFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  friends: {
+    type: 'Friend'
+    args: Record<HeroFriendsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Hero">,
+      args: { where?: FriendWhereInput | null, orderBy?: prisma.FriendOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Friend[]> | prisma.Friend[]
+  }
+}
+  
+
+// Types for Friend
+
+type FriendObject =
+  | FriendFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'partner', args?: [] | false, alias?: string  } 
+
+type FriendFields =
+  | 'id'
+  | 'name'
+  | 'partner'
+
+
+
+  
+
+export interface FriendFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  partner: {
+    type: 'Hero'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Friend">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Hero | null> | prisma.Hero | null
+  }
+}
+  
+
+// Types for HeroConnection
+
+type HeroConnectionObject =
+  | HeroConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type HeroConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface HeroConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"HeroConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'HeroEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"HeroConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.HeroEdge[]> | prisma.HeroEdge[]
+  }
+  aggregate: {
+    type: 'AggregateHero'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"HeroConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateHero> | prisma.AggregateHero
+  }
+}
+  
+
+// Types for HeroEdge
+
+type HeroEdgeObject =
+  | HeroEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type HeroEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface HeroEdgeFieldDetails {
+  node: {
+    type: 'Hero'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"HeroEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Hero> | prisma.Hero
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateHero
+
+type AggregateHeroObject =
+  | AggregateHeroFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateHeroFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateHeroFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for FriendConnection
+
+type FriendConnectionObject =
+  | FriendConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type FriendConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface FriendConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"FriendConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'FriendEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"FriendConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.FriendEdge[]> | prisma.FriendEdge[]
+  }
+  aggregate: {
+    type: 'AggregateFriend'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"FriendConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateFriend> | prisma.AggregateFriend
+  }
+}
+  
+
+// Types for FriendEdge
+
+type FriendEdgeObject =
+  | FriendEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type FriendEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface FriendEdgeFieldDetails {
+  node: {
+    type: 'Friend'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"FriendEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Friend> | prisma.Friend
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateFriend
+
+type AggregateFriendObject =
+  | AggregateFriendFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateFriendFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateFriendFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 // Types for Mutation
 
 type MutationObject =
@@ -677,6 +1212,18 @@ type MutationObject =
   | { name: 'upsertPost', args?: MutationUpsertPostArgs[] | false, alias?: string  } 
   | { name: 'deletePost', args?: MutationDeletePostArgs[] | false, alias?: string  } 
   | { name: 'deleteManyPosts', args?: MutationDeleteManyPostsArgs[] | false, alias?: string  } 
+  | { name: 'createHero', args?: MutationCreateHeroArgs[] | false, alias?: string  } 
+  | { name: 'updateHero', args?: MutationUpdateHeroArgs[] | false, alias?: string  } 
+  | { name: 'updateManyHeroes', args?: MutationUpdateManyHeroesArgs[] | false, alias?: string  } 
+  | { name: 'upsertHero', args?: MutationUpsertHeroArgs[] | false, alias?: string  } 
+  | { name: 'deleteHero', args?: MutationDeleteHeroArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyHeroes', args?: MutationDeleteManyHeroesArgs[] | false, alias?: string  } 
+  | { name: 'createFriend', args?: MutationCreateFriendArgs[] | false, alias?: string  } 
+  | { name: 'updateFriend', args?: MutationUpdateFriendArgs[] | false, alias?: string  } 
+  | { name: 'updateManyFriends', args?: MutationUpdateManyFriendsArgs[] | false, alias?: string  } 
+  | { name: 'upsertFriend', args?: MutationUpsertFriendArgs[] | false, alias?: string  } 
+  | { name: 'deleteFriend', args?: MutationDeleteFriendArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyFriends', args?: MutationDeleteManyFriendsArgs[] | false, alias?: string  } 
 
 type MutationFields =
   | 'createUser'
@@ -691,6 +1238,18 @@ type MutationFields =
   | 'upsertPost'
   | 'deletePost'
   | 'deleteManyPosts'
+  | 'createHero'
+  | 'updateHero'
+  | 'updateManyHeroes'
+  | 'upsertHero'
+  | 'deleteHero'
+  | 'deleteManyHeroes'
+  | 'createFriend'
+  | 'updateFriend'
+  | 'updateManyFriends'
+  | 'upsertFriend'
+  | 'deleteFriend'
+  | 'deleteManyFriends'
 
 
 type MutationCreateUserArgs =
@@ -724,6 +1283,38 @@ type MutationUpsertPostArgs =
 type MutationDeletePostArgs =
   | 'where'
 type MutationDeleteManyPostsArgs =
+  | 'where'
+type MutationCreateHeroArgs =
+  | 'data'
+type MutationUpdateHeroArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyHeroesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertHeroArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteHeroArgs =
+  | 'where'
+type MutationDeleteManyHeroesArgs =
+  | 'where'
+type MutationCreateFriendArgs =
+  | 'data'
+type MutationUpdateFriendArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyFriendsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertFriendArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteFriendArgs =
+  | 'where'
+type MutationDeleteManyFriendsArgs =
   | 'where'
   
 
@@ -884,6 +1475,162 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
+  createHero: {
+    type: 'Hero'
+    args: Record<MutationCreateHeroArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: HeroCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Hero> | prisma.Hero
+  }
+  updateHero: {
+    type: 'Hero'
+    args: Record<MutationUpdateHeroArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: HeroUpdateInput, where: HeroWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Hero | null> | prisma.Hero | null
+  }
+  updateManyHeroes: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyHeroesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: HeroUpdateManyMutationInput, where?: HeroWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertHero: {
+    type: 'Hero'
+    args: Record<MutationUpsertHeroArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: HeroWhereUniqueInput, create: HeroCreateInput, update: HeroUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Hero> | prisma.Hero
+  }
+  deleteHero: {
+    type: 'Hero'
+    args: Record<MutationDeleteHeroArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: HeroWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Hero | null> | prisma.Hero | null
+  }
+  deleteManyHeroes: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyHeroesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: HeroWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createFriend: {
+    type: 'Friend'
+    args: Record<MutationCreateFriendArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: FriendCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Friend> | prisma.Friend
+  }
+  updateFriend: {
+    type: 'Friend'
+    args: Record<MutationUpdateFriendArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: FriendUpdateInput, where: FriendWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Friend | null> | prisma.Friend | null
+  }
+  updateManyFriends: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyFriendsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: FriendUpdateManyMutationInput, where?: FriendWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertFriend: {
+    type: 'Friend'
+    args: Record<MutationUpsertFriendArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: FriendWhereUniqueInput, create: FriendCreateInput, update: FriendUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Friend> | prisma.Friend
+  }
+  deleteFriend: {
+    type: 'Friend'
+    args: Record<MutationDeleteFriendArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: FriendWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Friend | null> | prisma.Friend | null
+  }
+  deleteManyFriends: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyFriendsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: FriendWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
 }
   
 
@@ -918,15 +1665,23 @@ type SubscriptionObject =
   | SubscriptionFields
   | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
   | { name: 'post', args?: SubscriptionPostArgs[] | false, alias?: string  } 
+  | { name: 'hero', args?: SubscriptionHeroArgs[] | false, alias?: string  } 
+  | { name: 'friend', args?: SubscriptionFriendArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
   | 'user'
   | 'post'
+  | 'hero'
+  | 'friend'
 
 
 type SubscriptionUserArgs =
   | 'where'
 type SubscriptionPostArgs =
+  | 'where'
+type SubscriptionHeroArgs =
+  | 'where'
+type SubscriptionFriendArgs =
   | 'where'
   
 
@@ -956,6 +1711,32 @@ export interface SubscriptionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PostSubscriptionPayload | null> | prisma.PostSubscriptionPayload | null
+  }
+  hero: {
+    type: 'HeroSubscriptionPayload'
+    args: Record<SubscriptionHeroArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: HeroSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.HeroSubscriptionPayload | null> | prisma.HeroSubscriptionPayload | null
+  }
+  friend: {
+    type: 'FriendSubscriptionPayload'
+    args: Record<SubscriptionFriendArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: FriendSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.FriendSubscriptionPayload | null> | prisma.FriendSubscriptionPayload | null
   }
 }
   
@@ -1190,6 +1971,216 @@ export interface PostPreviousValuesFieldDetails {
 }
   
 
+// Types for HeroSubscriptionPayload
+
+type HeroSubscriptionPayloadObject =
+  | HeroSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type HeroSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface HeroSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"HeroSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Hero'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"HeroSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Hero | null> | prisma.Hero | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'HeroPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"HeroSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.HeroPreviousValues | null> | prisma.HeroPreviousValues | null
+  }
+}
+  
+
+// Types for HeroPreviousValues
+
+type HeroPreviousValuesObject =
+  | HeroPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+
+type HeroPreviousValuesFields =
+  | 'id'
+  | 'name'
+
+
+
+  
+
+export interface HeroPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for FriendSubscriptionPayload
+
+type FriendSubscriptionPayloadObject =
+  | FriendSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type FriendSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface FriendSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"FriendSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Friend'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"FriendSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Friend | null> | prisma.Friend | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'FriendPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"FriendSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.FriendPreviousValues | null> | prisma.FriendPreviousValues | null
+  }
+}
+  
+
+// Types for FriendPreviousValues
+
+type FriendPreviousValuesObject =
+  | FriendPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+
+type FriendPreviousValuesFields =
+  | 'id'
+  | 'name'
+
+
+
+  
+
+export interface FriendPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 
 export interface UserWhereUniqueInput {
   id?: string | null
@@ -1379,6 +2370,162 @@ export interface PostWhereUniqueInput {
 }
 export type PostWhereUniqueInputInputObject =
   | Extract<keyof PostWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface HeroWhereUniqueInput {
+  id?: string | null
+}
+export type HeroWhereUniqueInputInputObject =
+  | Extract<keyof HeroWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface FriendWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  partner?: HeroWhereInput | null
+  AND?: FriendWhereInput[]
+  OR?: FriendWhereInput[]
+  NOT?: FriendWhereInput[]
+}
+export type FriendWhereInputInputObject =
+  | Extract<keyof FriendWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'partner', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface HeroWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  friends_every?: FriendWhereInput | null
+  friends_some?: FriendWhereInput | null
+  friends_none?: FriendWhereInput | null
+  AND?: HeroWhereInput[]
+  OR?: HeroWhereInput[]
+  NOT?: HeroWhereInput[]
+}
+export type HeroWhereInputInputObject =
+  | Extract<keyof HeroWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'friends_every', alias?: string  } 
+  | { name: 'friends_some', alias?: string  } 
+  | { name: 'friends_none', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface FriendWhereUniqueInput {
+  id?: string | null
+}
+export type FriendWhereUniqueInputInputObject =
+  | Extract<keyof FriendWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
 export interface UserCreateInput {
@@ -1663,6 +2810,262 @@ export type PostUpdateManyMutationInputInputObject =
   | { name: 'title', alias?: string  } 
   | { name: 'published', alias?: string  } 
   
+export interface HeroCreateInput {
+  id?: string | null
+  name?: string
+  friends?: FriendCreateManyWithoutPartnerInput | null
+}
+export type HeroCreateInputInputObject =
+  | Extract<keyof HeroCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'friends', alias?: string  } 
+  
+export interface FriendCreateManyWithoutPartnerInput {
+  create?: FriendCreateWithoutPartnerInput[]
+  connect?: FriendWhereUniqueInput[]
+}
+export type FriendCreateManyWithoutPartnerInputInputObject =
+  | Extract<keyof FriendCreateManyWithoutPartnerInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface FriendCreateWithoutPartnerInput {
+  id?: string | null
+  name?: string
+}
+export type FriendCreateWithoutPartnerInputInputObject =
+  | Extract<keyof FriendCreateWithoutPartnerInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  
+export interface HeroUpdateInput {
+  name?: string | null
+  friends?: FriendUpdateManyWithoutPartnerInput | null
+}
+export type HeroUpdateInputInputObject =
+  | Extract<keyof HeroUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'friends', alias?: string  } 
+  
+export interface FriendUpdateManyWithoutPartnerInput {
+  create?: FriendCreateWithoutPartnerInput[]
+  delete?: FriendWhereUniqueInput[]
+  connect?: FriendWhereUniqueInput[]
+  set?: FriendWhereUniqueInput[]
+  disconnect?: FriendWhereUniqueInput[]
+  update?: FriendUpdateWithWhereUniqueWithoutPartnerInput[]
+  upsert?: FriendUpsertWithWhereUniqueWithoutPartnerInput[]
+  deleteMany?: FriendScalarWhereInput[]
+  updateMany?: FriendUpdateManyWithWhereNestedInput[]
+}
+export type FriendUpdateManyWithoutPartnerInputInputObject =
+  | Extract<keyof FriendUpdateManyWithoutPartnerInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface FriendUpdateWithWhereUniqueWithoutPartnerInput {
+  where?: FriendWhereUniqueInput
+  data?: FriendUpdateWithoutPartnerDataInput
+}
+export type FriendUpdateWithWhereUniqueWithoutPartnerInputInputObject =
+  | Extract<keyof FriendUpdateWithWhereUniqueWithoutPartnerInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface FriendUpdateWithoutPartnerDataInput {
+  name?: string | null
+}
+export type FriendUpdateWithoutPartnerDataInputInputObject =
+  | Extract<keyof FriendUpdateWithoutPartnerDataInput, string>
+  | { name: 'name', alias?: string  } 
+  
+export interface FriendUpsertWithWhereUniqueWithoutPartnerInput {
+  where?: FriendWhereUniqueInput
+  update?: FriendUpdateWithoutPartnerDataInput
+  create?: FriendCreateWithoutPartnerInput
+}
+export type FriendUpsertWithWhereUniqueWithoutPartnerInputInputObject =
+  | Extract<keyof FriendUpsertWithWhereUniqueWithoutPartnerInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface FriendScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  AND?: FriendScalarWhereInput[]
+  OR?: FriendScalarWhereInput[]
+  NOT?: FriendScalarWhereInput[]
+}
+export type FriendScalarWhereInputInputObject =
+  | Extract<keyof FriendScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface FriendUpdateManyWithWhereNestedInput {
+  where?: FriendScalarWhereInput
+  data?: FriendUpdateManyDataInput
+}
+export type FriendUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof FriendUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface FriendUpdateManyDataInput {
+  name?: string | null
+}
+export type FriendUpdateManyDataInputInputObject =
+  | Extract<keyof FriendUpdateManyDataInput, string>
+  | { name: 'name', alias?: string  } 
+  
+export interface HeroUpdateManyMutationInput {
+  name?: string | null
+}
+export type HeroUpdateManyMutationInputInputObject =
+  | Extract<keyof HeroUpdateManyMutationInput, string>
+  | { name: 'name', alias?: string  } 
+  
+export interface FriendCreateInput {
+  id?: string | null
+  name?: string
+  partner?: HeroCreateOneWithoutFriendsInput | null
+}
+export type FriendCreateInputInputObject =
+  | Extract<keyof FriendCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'partner', alias?: string  } 
+  
+export interface HeroCreateOneWithoutFriendsInput {
+  create?: HeroCreateWithoutFriendsInput | null
+  connect?: HeroWhereUniqueInput | null
+}
+export type HeroCreateOneWithoutFriendsInputInputObject =
+  | Extract<keyof HeroCreateOneWithoutFriendsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface HeroCreateWithoutFriendsInput {
+  id?: string | null
+  name?: string
+}
+export type HeroCreateWithoutFriendsInputInputObject =
+  | Extract<keyof HeroCreateWithoutFriendsInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  
+export interface FriendUpdateInput {
+  name?: string | null
+  partner?: HeroUpdateOneWithoutFriendsInput | null
+}
+export type FriendUpdateInputInputObject =
+  | Extract<keyof FriendUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'partner', alias?: string  } 
+  
+export interface HeroUpdateOneWithoutFriendsInput {
+  create?: HeroCreateWithoutFriendsInput | null
+  update?: HeroUpdateWithoutFriendsDataInput | null
+  upsert?: HeroUpsertWithoutFriendsInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: HeroWhereUniqueInput | null
+}
+export type HeroUpdateOneWithoutFriendsInputInputObject =
+  | Extract<keyof HeroUpdateOneWithoutFriendsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface HeroUpdateWithoutFriendsDataInput {
+  name?: string | null
+}
+export type HeroUpdateWithoutFriendsDataInputInputObject =
+  | Extract<keyof HeroUpdateWithoutFriendsDataInput, string>
+  | { name: 'name', alias?: string  } 
+  
+export interface HeroUpsertWithoutFriendsInput {
+  update?: HeroUpdateWithoutFriendsDataInput
+  create?: HeroCreateWithoutFriendsInput
+}
+export type HeroUpsertWithoutFriendsInputInputObject =
+  | Extract<keyof HeroUpsertWithoutFriendsInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface FriendUpdateManyMutationInput {
+  name?: string | null
+}
+export type FriendUpdateManyMutationInputInputObject =
+  | Extract<keyof FriendUpdateManyMutationInput, string>
+  | { name: 'name', alias?: string  } 
+  
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -1705,6 +3108,48 @@ export type PostSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
+export interface HeroSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: HeroWhereInput | null
+  AND?: HeroSubscriptionWhereInput[]
+  OR?: HeroSubscriptionWhereInput[]
+  NOT?: HeroSubscriptionWhereInput[]
+}
+export type HeroSubscriptionWhereInputInputObject =
+  | Extract<keyof HeroSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface FriendSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: FriendWhereInput | null
+  AND?: FriendSubscriptionWhereInput[]
+  OR?: FriendSubscriptionWhereInput[]
+  NOT?: FriendSubscriptionWhereInput[]
+}
+export type FriendSubscriptionWhereInputInputObject =
+  | Extract<keyof FriendSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 
 export type PostOrderByInputValues =
   | 'id_ASC'
@@ -1723,6 +3168,26 @@ export type UserOrderByInputValues =
   | 'id_DESC'
   | 'email_ASC'
   | 'email_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type FriendOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type HeroOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
   | 'createdAt_ASC'
