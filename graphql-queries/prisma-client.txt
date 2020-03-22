@@ -46,3 +46,35 @@ query heroesAndFriends {
     }
   }
 }
+
+query allClients {
+  clients {
+    id
+    name
+    active
+  }
+}
+
+query activeClients {
+  clients(where:{active:true}) {
+		id
+    name
+  }
+}
+
+query activeClientsPositions {
+	clientsConnection(where:{active:true}) {
+    edges {
+      node {
+        active
+        positions {
+          id
+          name
+          clientRef {
+            name
+          }
+        }
+      }
+    }
+  }
+}
