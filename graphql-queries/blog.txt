@@ -11,6 +11,17 @@ query publishedPosts {
   }
 }
 
+query allPosts {
+  allPosts {
+    id
+    title
+    published
+    author {
+      name
+    }
+  }
+}
+
 query publishedPostsByUser {
   postsByUser(email: "roger.urich@shiftpixy.com") {
     id
@@ -22,7 +33,7 @@ query publishedPostsByUser {
 mutation createDraft {
   createDraft(
     title: "My first mutated post!"
-    authorId: "ck81enkkf000z0773zwbj34a9"
+    authorId: "ck82jivui001g0750hv5bi6pf"
   ) {
     id
     title
@@ -34,7 +45,7 @@ mutation createDraft {
 }
 
 mutation publishDraft {
-  publish(id: "ck829l6nu008707754d83kvz2") {
+  publish(id: "ck82lkkof008n0750847wtqel") {
     id
     title
     published
