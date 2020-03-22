@@ -1,0 +1,27 @@
+query allClients {
+  allClients {
+    id
+    name
+    active
+  }
+}
+
+query activeClients {
+  activeClients {
+    id
+    name
+  }
+}
+
+query oneClient {
+  client(where: { id: "ck82onnhc00e70750y3vy6cxd" }) {
+    name
+    address
+    city
+    zipCode
+    stateRef {
+      name
+      abbreviation
+    }
+  }
+}

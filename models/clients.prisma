@@ -7,6 +7,7 @@ type Client {
     city: String!
     stateRef: State! @relation(link: INLINE)
     zipCode: String!
+    active: Boolean! @default(value: true)
     positions: [Position!]! @relation(name: "ClientPositions")
 }
 

@@ -357,7 +357,9 @@ export type ClientOrderByInput =
   | "city_ASC"
   | "city_DESC"
   | "zipCode_ASC"
-  | "zipCode_DESC";
+  | "zipCode_DESC"
+  | "active_ASC"
+  | "active_DESC";
 
 export type FriendOrderByInput =
   | "id_ASC"
@@ -549,6 +551,8 @@ export interface ClientWhereInput {
   zipCode_not_starts_with?: Maybe<String>;
   zipCode_ends_with?: Maybe<String>;
   zipCode_not_ends_with?: Maybe<String>;
+  active?: Maybe<Boolean>;
+  active_not?: Maybe<Boolean>;
   positions_every?: Maybe<PositionWhereInput>;
   positions_some?: Maybe<PositionWhereInput>;
   positions_none?: Maybe<PositionWhereInput>;
@@ -800,6 +804,7 @@ export interface ClientCreateInput {
   city: String;
   stateRef: StateCreateOneInput;
   zipCode: String;
+  active?: Maybe<Boolean>;
   positions?: Maybe<PositionCreateManyWithoutClientRefInput>;
 }
 
@@ -835,6 +840,7 @@ export interface ClientUpdateInput {
   city?: Maybe<String>;
   stateRef?: Maybe<StateUpdateOneRequiredInput>;
   zipCode?: Maybe<String>;
+  active?: Maybe<Boolean>;
   positions?: Maybe<PositionUpdateManyWithoutClientRefInput>;
 }
 
@@ -959,6 +965,7 @@ export interface ClientUpdateManyMutationInput {
   address?: Maybe<String>;
   city?: Maybe<String>;
   zipCode?: Maybe<String>;
+  active?: Maybe<Boolean>;
 }
 
 export interface FriendCreateInput {
@@ -1135,6 +1142,7 @@ export interface ClientCreateWithoutPositionsInput {
   city: String;
   stateRef: StateCreateOneInput;
   zipCode: String;
+  active?: Maybe<Boolean>;
 }
 
 export interface PositionUpdateInput {
@@ -1179,6 +1187,7 @@ export interface ClientUpdateWithoutPositionsDataInput {
   city?: Maybe<String>;
   stateRef?: Maybe<StateUpdateOneRequiredInput>;
   zipCode?: Maybe<String>;
+  active?: Maybe<Boolean>;
 }
 
 export interface ClientUpsertWithWhereUniqueWithoutPositionsInput {
@@ -1286,6 +1295,8 @@ export interface ClientScalarWhereInput {
   zipCode_not_starts_with?: Maybe<String>;
   zipCode_ends_with?: Maybe<String>;
   zipCode_not_ends_with?: Maybe<String>;
+  active?: Maybe<Boolean>;
+  active_not?: Maybe<Boolean>;
   AND?: Maybe<ClientScalarWhereInput[] | ClientScalarWhereInput>;
   OR?: Maybe<ClientScalarWhereInput[] | ClientScalarWhereInput>;
   NOT?: Maybe<ClientScalarWhereInput[] | ClientScalarWhereInput>;
@@ -1303,6 +1314,7 @@ export interface ClientUpdateManyDataInput {
   address?: Maybe<String>;
   city?: Maybe<String>;
   zipCode?: Maybe<String>;
+  active?: Maybe<Boolean>;
 }
 
 export interface PositionUpdateManyMutationInput {
@@ -1572,6 +1584,7 @@ export interface Client {
   address: String;
   city: String;
   zipCode: String;
+  active: Boolean;
 }
 
 export interface ClientPromise extends Promise<Client>, Fragmentable {
@@ -1583,6 +1596,7 @@ export interface ClientPromise extends Promise<Client>, Fragmentable {
   city: () => Promise<String>;
   stateRef: <T = StatePromise>() => T;
   zipCode: () => Promise<String>;
+  active: () => Promise<Boolean>;
   positions: <T = FragmentableArray<Position>>(args?: {
     where?: PositionWhereInput;
     orderBy?: PositionOrderByInput;
@@ -1605,6 +1619,7 @@ export interface ClientSubscription
   city: () => Promise<AsyncIterator<String>>;
   stateRef: <T = StateSubscription>() => T;
   zipCode: () => Promise<AsyncIterator<String>>;
+  active: () => Promise<AsyncIterator<Boolean>>;
   positions: <T = Promise<AsyncIterator<PositionSubscription>>>(args?: {
     where?: PositionWhereInput;
     orderBy?: PositionOrderByInput;
@@ -1627,6 +1642,7 @@ export interface ClientNullablePromise
   city: () => Promise<String>;
   stateRef: <T = StatePromise>() => T;
   zipCode: () => Promise<String>;
+  active: () => Promise<Boolean>;
   positions: <T = FragmentableArray<Position>>(args?: {
     where?: PositionWhereInput;
     orderBy?: PositionOrderByInput;
@@ -2337,6 +2353,7 @@ export interface ClientPreviousValues {
   address: String;
   city: String;
   zipCode: String;
+  active: Boolean;
 }
 
 export interface ClientPreviousValuesPromise
@@ -2349,6 +2366,7 @@ export interface ClientPreviousValuesPromise
   address: () => Promise<String>;
   city: () => Promise<String>;
   zipCode: () => Promise<String>;
+  active: () => Promise<Boolean>;
 }
 
 export interface ClientPreviousValuesSubscription
@@ -2361,6 +2379,7 @@ export interface ClientPreviousValuesSubscription
   address: () => Promise<AsyncIterator<String>>;
   city: () => Promise<AsyncIterator<String>>;
   zipCode: () => Promise<AsyncIterator<String>>;
+  active: () => Promise<AsyncIterator<Boolean>>;
 }
 
 export interface FriendSubscriptionPayload {
@@ -2651,14 +2670,14 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
-*/
-export type Int = number;
-
-/*
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
 
 export type Long = string;
 

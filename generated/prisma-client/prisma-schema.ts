@@ -43,6 +43,7 @@ type Client {
   city: String!
   stateRef: State!
   zipCode: String!
+  active: Boolean!
   positions(where: PositionWhereInput, orderBy: PositionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Position!]
 }
 
@@ -61,6 +62,7 @@ input ClientCreateInput {
   city: String!
   stateRef: StateCreateOneInput!
   zipCode: String!
+  active: Boolean
   positions: PositionCreateManyWithoutClientRefInput
 }
 
@@ -78,6 +80,7 @@ input ClientCreateWithoutPositionsInput {
   city: String!
   stateRef: StateCreateOneInput!
   zipCode: String!
+  active: Boolean
 }
 
 type ClientEdge {
@@ -100,6 +103,8 @@ enum ClientOrderByInput {
   city_DESC
   zipCode_ASC
   zipCode_DESC
+  active_ASC
+  active_DESC
 }
 
 type ClientPreviousValues {
@@ -110,6 +115,7 @@ type ClientPreviousValues {
   address: String!
   city: String!
   zipCode: String!
+  active: Boolean!
 }
 
 input ClientScalarWhereInput {
@@ -211,6 +217,8 @@ input ClientScalarWhereInput {
   zipCode_not_starts_with: String
   zipCode_ends_with: String
   zipCode_not_ends_with: String
+  active: Boolean
+  active_not: Boolean
   AND: [ClientScalarWhereInput!]
   OR: [ClientScalarWhereInput!]
   NOT: [ClientScalarWhereInput!]
@@ -242,6 +250,7 @@ input ClientUpdateInput {
   city: String
   stateRef: StateUpdateOneRequiredInput
   zipCode: String
+  active: Boolean
   positions: PositionUpdateManyWithoutClientRefInput
 }
 
@@ -252,6 +261,7 @@ input ClientUpdateManyDataInput {
   address: String
   city: String
   zipCode: String
+  active: Boolean
 }
 
 input ClientUpdateManyMutationInput {
@@ -261,6 +271,7 @@ input ClientUpdateManyMutationInput {
   address: String
   city: String
   zipCode: String
+  active: Boolean
 }
 
 input ClientUpdateManyWithoutPositionsInput {
@@ -288,6 +299,7 @@ input ClientUpdateWithoutPositionsDataInput {
   city: String
   stateRef: StateUpdateOneRequiredInput
   zipCode: String
+  active: Boolean
 }
 
 input ClientUpdateWithWhereUniqueWithoutPositionsInput {
@@ -401,6 +413,8 @@ input ClientWhereInput {
   zipCode_not_starts_with: String
   zipCode_ends_with: String
   zipCode_not_ends_with: String
+  active: Boolean
+  active_not: Boolean
   positions_every: PositionWhereInput
   positions_some: PositionWhereInput
   positions_none: PositionWhereInput
