@@ -1646,6 +1646,7 @@ type ClientObject =
   | { name: 'city', args?: [] | false, alias?: string  } 
   | { name: 'stateRef', args?: [] | false, alias?: string  } 
   | { name: 'zipCode', args?: [] | false, alias?: string  } 
+  | { name: 'active', args?: [] | false, alias?: string  } 
   | { name: 'positions', args?: ClientPositionsArgs[] | false, alias?: string  } 
 
 type ClientFields =
@@ -1657,6 +1658,7 @@ type ClientFields =
   | 'city'
   | 'stateRef'
   | 'zipCode'
+  | 'active'
   | 'positions'
 
 
@@ -1734,6 +1736,14 @@ export interface ClientFieldDetails {
   }
   zipCode: {
     type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  active: {
+    type: 'Boolean'
     args: {}
     description: string
     list: undefined
@@ -3623,6 +3633,7 @@ type ClientPreviousValuesObject =
   | { name: 'address', args?: [] | false, alias?: string  } 
   | { name: 'city', args?: [] | false, alias?: string  } 
   | { name: 'zipCode', args?: [] | false, alias?: string  } 
+  | { name: 'active', args?: [] | false, alias?: string  } 
 
 type ClientPreviousValuesFields =
   | 'id'
@@ -3632,6 +3643,7 @@ type ClientPreviousValuesFields =
   | 'address'
   | 'city'
   | 'zipCode'
+  | 'active'
 
 
 
@@ -3688,6 +3700,14 @@ export interface ClientPreviousValuesFieldDetails {
   }
   zipCode: {
     type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  active: {
+    type: 'Boolean'
     args: {}
     description: string
     list: undefined
@@ -4471,6 +4491,8 @@ export interface ClientWhereInput {
   zipCode_not_starts_with?: string | null
   zipCode_ends_with?: string | null
   zipCode_not_ends_with?: string | null
+  active?: boolean | null
+  active_not?: boolean | null
   positions_every?: PositionWhereInput | null
   positions_some?: PositionWhereInput | null
   positions_none?: PositionWhereInput | null
@@ -4579,6 +4601,8 @@ export type ClientWhereInputInputObject =
   | { name: 'zipCode_not_starts_with', alias?: string  } 
   | { name: 'zipCode_ends_with', alias?: string  } 
   | { name: 'zipCode_not_ends_with', alias?: string  } 
+  | { name: 'active', alias?: string  } 
+  | { name: 'active_not', alias?: string  } 
   | { name: 'positions_every', alias?: string  } 
   | { name: 'positions_some', alias?: string  } 
   | { name: 'positions_none', alias?: string  } 
@@ -5171,6 +5195,7 @@ export interface ClientCreateInput {
   city?: string
   stateRef?: StateCreateOneInput
   zipCode?: string
+  active?: boolean
   positions?: PositionCreateManyWithoutClientRefInput | null
 }
 export type ClientCreateInputInputObject =
@@ -5183,6 +5208,7 @@ export type ClientCreateInputInputObject =
   | { name: 'city', alias?: string  } 
   | { name: 'stateRef', alias?: string  } 
   | { name: 'zipCode', alias?: string  } 
+  | { name: 'active', alias?: string  } 
   | { name: 'positions', alias?: string  } 
   
 export interface StateCreateOneInput {
@@ -5222,6 +5248,7 @@ export interface ClientUpdateInput {
   city?: string | null
   stateRef?: StateUpdateOneRequiredInput | null
   zipCode?: string | null
+  active?: boolean | null
   positions?: PositionUpdateManyWithoutClientRefInput | null
 }
 export type ClientUpdateInputInputObject =
@@ -5233,6 +5260,7 @@ export type ClientUpdateInputInputObject =
   | { name: 'city', alias?: string  } 
   | { name: 'stateRef', alias?: string  } 
   | { name: 'zipCode', alias?: string  } 
+  | { name: 'active', alias?: string  } 
   | { name: 'positions', alias?: string  } 
   
 export interface StateUpdateOneRequiredInput {
@@ -5438,6 +5466,7 @@ export interface ClientUpdateManyMutationInput {
   address?: string | null
   city?: string | null
   zipCode?: string | null
+  active?: boolean | null
 }
 export type ClientUpdateManyMutationInputInputObject =
   | Extract<keyof ClientUpdateManyMutationInput, string>
@@ -5447,6 +5476,7 @@ export type ClientUpdateManyMutationInputInputObject =
   | { name: 'address', alias?: string  } 
   | { name: 'city', alias?: string  } 
   | { name: 'zipCode', alias?: string  } 
+  | { name: 'active', alias?: string  } 
   
 export interface PositionCreateInput {
   id?: string | null
@@ -5479,6 +5509,7 @@ export interface ClientCreateWithoutPositionsInput {
   city?: string
   stateRef?: StateCreateOneInput
   zipCode?: string
+  active?: boolean
 }
 export type ClientCreateWithoutPositionsInputInputObject =
   | Extract<keyof ClientCreateWithoutPositionsInput, string>
@@ -5490,6 +5521,7 @@ export type ClientCreateWithoutPositionsInputInputObject =
   | { name: 'city', alias?: string  } 
   | { name: 'stateRef', alias?: string  } 
   | { name: 'zipCode', alias?: string  } 
+  | { name: 'active', alias?: string  } 
   
 export interface PositionUpdateInput {
   code?: string | null
@@ -5542,6 +5574,7 @@ export interface ClientUpdateWithoutPositionsDataInput {
   city?: string | null
   stateRef?: StateUpdateOneRequiredInput | null
   zipCode?: string | null
+  active?: boolean | null
 }
 export type ClientUpdateWithoutPositionsDataInputInputObject =
   | Extract<keyof ClientUpdateWithoutPositionsDataInput, string>
@@ -5552,6 +5585,7 @@ export type ClientUpdateWithoutPositionsDataInputInputObject =
   | { name: 'city', alias?: string  } 
   | { name: 'stateRef', alias?: string  } 
   | { name: 'zipCode', alias?: string  } 
+  | { name: 'active', alias?: string  } 
   
 export interface ClientUpsertWithWhereUniqueWithoutPositionsInput {
   where?: ClientWhereUniqueInput
@@ -5663,6 +5697,8 @@ export interface ClientScalarWhereInput {
   zipCode_not_starts_with?: string | null
   zipCode_ends_with?: string | null
   zipCode_not_ends_with?: string | null
+  active?: boolean | null
+  active_not?: boolean | null
   AND?: ClientScalarWhereInput[]
   OR?: ClientScalarWhereInput[]
   NOT?: ClientScalarWhereInput[]
@@ -5767,6 +5803,8 @@ export type ClientScalarWhereInputInputObject =
   | { name: 'zipCode_not_starts_with', alias?: string  } 
   | { name: 'zipCode_ends_with', alias?: string  } 
   | { name: 'zipCode_not_ends_with', alias?: string  } 
+  | { name: 'active', alias?: string  } 
+  | { name: 'active_not', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -5787,6 +5825,7 @@ export interface ClientUpdateManyDataInput {
   address?: string | null
   city?: string | null
   zipCode?: string | null
+  active?: boolean | null
 }
 export type ClientUpdateManyDataInputInputObject =
   | Extract<keyof ClientUpdateManyDataInput, string>
@@ -5796,6 +5835,7 @@ export type ClientUpdateManyDataInputInputObject =
   | { name: 'address', alias?: string  } 
   | { name: 'city', alias?: string  } 
   | { name: 'zipCode', alias?: string  } 
+  | { name: 'active', alias?: string  } 
   
 export interface PositionUpdateManyMutationInput {
   code?: string | null
@@ -6037,6 +6077,8 @@ export type ClientOrderByInputValues =
   | 'city_DESC'
   | 'zipCode_ASC'
   | 'zipCode_DESC'
+  | 'active_ASC'
+  | 'active_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
