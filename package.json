@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "blog": "ts-node ./projects/blog/index.ts"
+    "blog": "ts-node ./projects/blog/index.ts",
+    "blog-server":"ts-node-dev --no-notify --respawn --transpileOnly ./projects/blog/main.ts"
   },
   "keywords": [],
   "author": "",
