@@ -5,7 +5,7 @@ import { stringArg, idArg } from 'nexus'
 import { prismaObjectType, makePrismaSchema } from 'nexus-prisma'
 import { GraphQLServer } from 'graphql-yoga'
 
-const Query = prismaObjectType({
+const Query = prismaObjectType<'Query'>({
   name: 'Query',
   definition(t) {
     t.prismaFields(['post'])
@@ -23,7 +23,7 @@ const Query = prismaObjectType({
   },
 })
 
-const Mutation = prismaObjectType({
+const Mutation = prismaObjectType<'Mutation'>({
   name: 'Mutation',
   definition(t) {
     t.prismaFields(['createUser', 'deletePost'])
