@@ -1,6 +1,6 @@
 type Client {
     id: ID! @id
-    clientId: String!
+    clientId: String! @unique
     name: String!
     dba: String
     address: String!
