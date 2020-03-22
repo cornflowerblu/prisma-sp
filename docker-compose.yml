@@ -1,0 +1,23 @@
+version: '3'
+services:
+  prisma:
+    image: prismagraphql/prisma:1.34
+    restart: always
+    ports:
+    - "4466:4466"
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        managementApiSecret: ${PRISMA_MGMT_KEY}
+        databases:
+          development:
+            connector: postgres
+            host: ${DB_HOST}
+            database: ${DB_NAME}
+            schema: public
+            user: ${DB_USER}
+            password: ${DB_PASS}
+            ssl: false
+            rawAccess: true
+            port: ${DB_PORT}
+            migrations: true
