@@ -20,6 +20,11 @@ const Query = prismaObjectType<'Query'>({
       resolve: (_, { email }, ctx) =>
         ctx.prisma.posts({ where: { author: { email } } }),
     })
+    t.list.field('allPosts', {
+      type: 'Post',
+      resolve: (_, args, ctx) =>
+        ctx.prisma.posts()
+    })
   },
 })
 
