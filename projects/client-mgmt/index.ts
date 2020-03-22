@@ -8,57 +8,17 @@ import { GraphQLServer } from 'graphql-yoga'
 const Query = prismaObjectType<'Query'>({
   name: 'Query',
   definition(t) {
-    t.prismaFields(['post'])
-    t.list.field('feed', {
-      type: 'Post',
+    t.prismaFields(['client'])
+    t.list.field('allClients', {
+      type: 'Client',
       resolve: (_, args, ctx) =>
-        ctx.prisma.posts({ where: { published: true } }),
-    })
-    t.list.field('postsByUser', {
-      type: 'Post',
-      args: { email: stringArg() },
-      resolve: (_, { email }, ctx) =>
-        ctx.prisma.posts({ where: { author: { email } } }),
-    })
-    t.list.field('allPosts', {
-      type: 'Post',
-      resolve: (_, args, ctx) =>
-        ctx.prisma.posts()
-    })
-  },
-})
-
-const Mutation = prismaObjectType<'Mutation'>({
-  name: 'Mutation',
-  definition(t) {
-    t.prismaFields(['createUser', 'deletePost'])
-    t.field('createDraft', {
-      type: 'Post',
-      args: {
-        title: stringArg(),
-        authorId: idArg({ nullable: true }),
-      },
-      resolve: (_, { title, authorId }, ctx) =>
-        ctx.prisma.createPost({
-          title,
-          author: { connect: { id: authorId } },
-        }),
-    })
-    t.field('publish', {
-      type: 'Post',
-      nullable: true,
-      args: { id: idArg() },
-      resolve: (_, { id }, ctx) =>
-        ctx.prisma.updatePost({
-          where: { id },
-          data: { published: true },
-        }),
+        ctx.prisma.clients(),
     })
   },
 })
 
 const schema = makePrismaSchema({
-  types: [Query, Mutation],
+  types: [Query],
 
   prisma: {
     datamodelInfo,
@@ -74,5 +34,6 @@ const schema = makePrismaSchema({
 const server = new GraphQLServer({
   schema,
   context: { prisma },
+  
 })
 server.start(() => console.log('Server is running on http://localhost:4000'))
