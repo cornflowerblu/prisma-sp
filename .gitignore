@@ -4,3 +4,4 @@
 
 # Generated files / folders
 node_modules
+.DS_Store
