@@ -3,5 +3,4 @@
 .env
 
 # Generated files / folders
-generated
 node_modules
