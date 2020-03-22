@@ -3,5 +3,5 @@
 .env
 
 # Generated files / folders
-generated/prisma-client/
+generated
 node_modules
