@@ -10,7 +10,7 @@ services:
         port: 4466
         managementApiSecret: ${PRISMA_MGMT_KEY}
         databases:
-          default:
+          development:
             connector: postgres
             host: prisma-2-instance-1.cxqiy9guhvym.us-west-2.rds.amazonaws.com
             database: ru_prisma_1
