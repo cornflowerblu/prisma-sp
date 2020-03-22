@@ -16,9 +16,12 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
+  client: (where?: ClientWhereInput) => Promise<boolean>;
   friend: (where?: FriendWhereInput) => Promise<boolean>;
   hero: (where?: HeroWhereInput) => Promise<boolean>;
+  position: (where?: PositionWhereInput) => Promise<boolean>;
   post: (where?: PostWhereInput) => Promise<boolean>;
+  state: (where?: StateWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
 
@@ -41,6 +44,25 @@ export interface Prisma {
    * Queries
    */
 
+  client: (where: ClientWhereUniqueInput) => ClientNullablePromise;
+  clients: (args?: {
+    where?: ClientWhereInput;
+    orderBy?: ClientOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Client>;
+  clientsConnection: (args?: {
+    where?: ClientWhereInput;
+    orderBy?: ClientOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => ClientConnectionPromise;
   friend: (where: FriendWhereUniqueInput) => FriendNullablePromise;
   friends: (args?: {
     where?: FriendWhereInput;
@@ -79,6 +101,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => HeroConnectionPromise;
+  position: (where: PositionWhereUniqueInput) => PositionNullablePromise;
+  positions: (args?: {
+    where?: PositionWhereInput;
+    orderBy?: PositionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<Position>;
+  positionsConnection: (args?: {
+    where?: PositionWhereInput;
+    orderBy?: PositionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => PositionConnectionPromise;
   post: (where: PostWhereUniqueInput) => PostNullablePromise;
   posts: (args?: {
     where?: PostWhereInput;
@@ -98,6 +139,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => PostConnectionPromise;
+  state: (where: StateWhereUniqueInput) => StateNullablePromise;
+  states: (args?: {
+    where?: StateWhereInput;
+    orderBy?: StateOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<State>;
+  statesConnection: (args?: {
+    where?: StateWhereInput;
+    orderBy?: StateOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => StateConnectionPromise;
   user: (where: UserWhereUniqueInput) => UserNullablePromise;
   users: (args?: {
     where?: UserWhereInput;
@@ -123,6 +183,22 @@ export interface Prisma {
    * Mutations
    */
 
+  createClient: (data: ClientCreateInput) => ClientPromise;
+  updateClient: (args: {
+    data: ClientUpdateInput;
+    where: ClientWhereUniqueInput;
+  }) => ClientPromise;
+  updateManyClients: (args: {
+    data: ClientUpdateManyMutationInput;
+    where?: ClientWhereInput;
+  }) => BatchPayloadPromise;
+  upsertClient: (args: {
+    where: ClientWhereUniqueInput;
+    create: ClientCreateInput;
+    update: ClientUpdateInput;
+  }) => ClientPromise;
+  deleteClient: (where: ClientWhereUniqueInput) => ClientPromise;
+  deleteManyClients: (where?: ClientWhereInput) => BatchPayloadPromise;
   createFriend: (data: FriendCreateInput) => FriendPromise;
   updateFriend: (args: {
     data: FriendUpdateInput;
@@ -155,6 +231,22 @@ export interface Prisma {
   }) => HeroPromise;
   deleteHero: (where: HeroWhereUniqueInput) => HeroPromise;
   deleteManyHeroes: (where?: HeroWhereInput) => BatchPayloadPromise;
+  createPosition: (data: PositionCreateInput) => PositionPromise;
+  updatePosition: (args: {
+    data: PositionUpdateInput;
+    where: PositionWhereUniqueInput;
+  }) => PositionPromise;
+  updateManyPositions: (args: {
+    data: PositionUpdateManyMutationInput;
+    where?: PositionWhereInput;
+  }) => BatchPayloadPromise;
+  upsertPosition: (args: {
+    where: PositionWhereUniqueInput;
+    create: PositionCreateInput;
+    update: PositionUpdateInput;
+  }) => PositionPromise;
+  deletePosition: (where: PositionWhereUniqueInput) => PositionPromise;
+  deleteManyPositions: (where?: PositionWhereInput) => BatchPayloadPromise;
   createPost: (data: PostCreateInput) => PostPromise;
   updatePost: (args: {
     data: PostUpdateInput;
@@ -171,6 +263,22 @@ export interface Prisma {
   }) => PostPromise;
   deletePost: (where: PostWhereUniqueInput) => PostPromise;
   deleteManyPosts: (where?: PostWhereInput) => BatchPayloadPromise;
+  createState: (data: StateCreateInput) => StatePromise;
+  updateState: (args: {
+    data: StateUpdateInput;
+    where: StateWhereUniqueInput;
+  }) => StatePromise;
+  updateManyStates: (args: {
+    data: StateUpdateManyMutationInput;
+    where?: StateWhereInput;
+  }) => BatchPayloadPromise;
+  upsertState: (args: {
+    where: StateWhereUniqueInput;
+    create: StateCreateInput;
+    update: StateUpdateInput;
+  }) => StatePromise;
+  deleteState: (where: StateWhereUniqueInput) => StatePromise;
+  deleteManyStates: (where?: StateWhereInput) => BatchPayloadPromise;
   createUser: (data: UserCreateInput) => UserPromise;
   updateUser: (args: {
     data: UserUpdateInput;
@@ -196,15 +304,24 @@ export interface Prisma {
 }
 
 export interface Subscription {
+  client: (
+    where?: ClientSubscriptionWhereInput
+  ) => ClientSubscriptionPayloadSubscription;
   friend: (
     where?: FriendSubscriptionWhereInput
   ) => FriendSubscriptionPayloadSubscription;
   hero: (
     where?: HeroSubscriptionWhereInput
   ) => HeroSubscriptionPayloadSubscription;
+  position: (
+    where?: PositionSubscriptionWhereInput
+  ) => PositionSubscriptionPayloadSubscription;
   post: (
     where?: PostSubscriptionWhereInput
   ) => PostSubscriptionPayloadSubscription;
+  state: (
+    where?: StateSubscriptionWhereInput
+  ) => StateSubscriptionPayloadSubscription;
   user: (
     where?: UserSubscriptionWhereInput
   ) => UserSubscriptionPayloadSubscription;
@@ -217,6 +334,30 @@ export interface ClientConstructor<T> {
 /**
  * Types
  */
+
+export type PositionOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "code_ASC"
+  | "code_DESC"
+  | "name_ASC"
+  | "name_DESC";
+
+export type ClientOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "clientId_ASC"
+  | "clientId_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "dba_ASC"
+  | "dba_DESC"
+  | "address_ASC"
+  | "address_DESC"
+  | "city_ASC"
+  | "city_DESC"
+  | "zipCode_ASC"
+  | "zipCode_DESC";
 
 export type FriendOrderByInput =
   | "id_ASC"
@@ -234,6 +375,14 @@ export type PostOrderByInput =
   | "published_ASC"
   | "published_DESC";
 
+export type StateOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "abbreviation_ASC"
+  | "abbreviation_DESC";
+
 export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -243,6 +392,217 @@ export type UserOrderByInput =
   | "name_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
+export type ClientWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface PositionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  code?: Maybe<ID_Input>;
+  code_not?: Maybe<ID_Input>;
+  code_in?: Maybe<ID_Input[] | ID_Input>;
+  code_not_in?: Maybe<ID_Input[] | ID_Input>;
+  code_lt?: Maybe<ID_Input>;
+  code_lte?: Maybe<ID_Input>;
+  code_gt?: Maybe<ID_Input>;
+  code_gte?: Maybe<ID_Input>;
+  code_contains?: Maybe<ID_Input>;
+  code_not_contains?: Maybe<ID_Input>;
+  code_starts_with?: Maybe<ID_Input>;
+  code_not_starts_with?: Maybe<ID_Input>;
+  code_ends_with?: Maybe<ID_Input>;
+  code_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  clientRef_every?: Maybe<ClientWhereInput>;
+  clientRef_some?: Maybe<ClientWhereInput>;
+  clientRef_none?: Maybe<ClientWhereInput>;
+  AND?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  OR?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+  NOT?: Maybe<PositionWhereInput[] | PositionWhereInput>;
+}
+
+export interface ClientWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  clientId?: Maybe<String>;
+  clientId_not?: Maybe<String>;
+  clientId_in?: Maybe<String[] | String>;
+  clientId_not_in?: Maybe<String[] | String>;
+  clientId_lt?: Maybe<String>;
+  clientId_lte?: Maybe<String>;
+  clientId_gt?: Maybe<String>;
+  clientId_gte?: Maybe<String>;
+  clientId_contains?: Maybe<String>;
+  clientId_not_contains?: Maybe<String>;
+  clientId_starts_with?: Maybe<String>;
+  clientId_not_starts_with?: Maybe<String>;
+  clientId_ends_with?: Maybe<String>;
+  clientId_not_ends_with?: Maybe<String>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  dba?: Maybe<String>;
+  dba_not?: Maybe<String>;
+  dba_in?: Maybe<String[] | String>;
+  dba_not_in?: Maybe<String[] | String>;
+  dba_lt?: Maybe<String>;
+  dba_lte?: Maybe<String>;
+  dba_gt?: Maybe<String>;
+  dba_gte?: Maybe<String>;
+  dba_contains?: Maybe<String>;
+  dba_not_contains?: Maybe<String>;
+  dba_starts_with?: Maybe<String>;
+  dba_not_starts_with?: Maybe<String>;
+  dba_ends_with?: Maybe<String>;
+  dba_not_ends_with?: Maybe<String>;
+  address?: Maybe<String>;
+  address_not?: Maybe<String>;
+  address_in?: Maybe<String[] | String>;
+  address_not_in?: Maybe<String[] | String>;
+  address_lt?: Maybe<String>;
+  address_lte?: Maybe<String>;
+  address_gt?: Maybe<String>;
+  address_gte?: Maybe<String>;
+  address_contains?: Maybe<String>;
+  address_not_contains?: Maybe<String>;
+  address_starts_with?: Maybe<String>;
+  address_not_starts_with?: Maybe<String>;
+  address_ends_with?: Maybe<String>;
+  address_not_ends_with?: Maybe<String>;
+  city?: Maybe<String>;
+  city_not?: Maybe<String>;
+  city_in?: Maybe<String[] | String>;
+  city_not_in?: Maybe<String[] | String>;
+  city_lt?: Maybe<String>;
+  city_lte?: Maybe<String>;
+  city_gt?: Maybe<String>;
+  city_gte?: Maybe<String>;
+  city_contains?: Maybe<String>;
+  city_not_contains?: Maybe<String>;
+  city_starts_with?: Maybe<String>;
+  city_not_starts_with?: Maybe<String>;
+  city_ends_with?: Maybe<String>;
+  city_not_ends_with?: Maybe<String>;
+  stateRef?: Maybe<StateWhereInput>;
+  zipCode?: Maybe<String>;
+  zipCode_not?: Maybe<String>;
+  zipCode_in?: Maybe<String[] | String>;
+  zipCode_not_in?: Maybe<String[] | String>;
+  zipCode_lt?: Maybe<String>;
+  zipCode_lte?: Maybe<String>;
+  zipCode_gt?: Maybe<String>;
+  zipCode_gte?: Maybe<String>;
+  zipCode_contains?: Maybe<String>;
+  zipCode_not_contains?: Maybe<String>;
+  zipCode_starts_with?: Maybe<String>;
+  zipCode_not_starts_with?: Maybe<String>;
+  zipCode_ends_with?: Maybe<String>;
+  zipCode_not_ends_with?: Maybe<String>;
+  positions_every?: Maybe<PositionWhereInput>;
+  positions_some?: Maybe<PositionWhereInput>;
+  positions_none?: Maybe<PositionWhereInput>;
+  AND?: Maybe<ClientWhereInput[] | ClientWhereInput>;
+  OR?: Maybe<ClientWhereInput[] | ClientWhereInput>;
+  NOT?: Maybe<ClientWhereInput[] | ClientWhereInput>;
+}
+
+export interface StateWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  abbreviation?: Maybe<String>;
+  abbreviation_not?: Maybe<String>;
+  abbreviation_in?: Maybe<String[] | String>;
+  abbreviation_not_in?: Maybe<String[] | String>;
+  abbreviation_lt?: Maybe<String>;
+  abbreviation_lte?: Maybe<String>;
+  abbreviation_gt?: Maybe<String>;
+  abbreviation_gte?: Maybe<String>;
+  abbreviation_contains?: Maybe<String>;
+  abbreviation_not_contains?: Maybe<String>;
+  abbreviation_starts_with?: Maybe<String>;
+  abbreviation_not_starts_with?: Maybe<String>;
+  abbreviation_ends_with?: Maybe<String>;
+  abbreviation_not_ends_with?: Maybe<String>;
+  AND?: Maybe<StateWhereInput[] | StateWhereInput>;
+  OR?: Maybe<StateWhereInput[] | StateWhereInput>;
+  NOT?: Maybe<StateWhereInput[] | StateWhereInput>;
+}
 
 export type FriendWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
@@ -322,6 +682,11 @@ export interface HeroWhereInput {
 
 export type HeroWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+}>;
+
+export type PositionWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  code?: Maybe<ID_Input>;
 }>;
 
 export type PostWhereUniqueInput = AtLeastOne<{
@@ -416,10 +781,184 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
+export type StateWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
 export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
   email?: Maybe<String>;
 }>;
+
+export interface ClientCreateInput {
+  id?: Maybe<ID_Input>;
+  clientId: String;
+  name: String;
+  dba?: Maybe<String>;
+  address: String;
+  city: String;
+  stateRef: StateCreateOneInput;
+  zipCode: String;
+  positions?: Maybe<PositionCreateManyWithoutClientRefInput>;
+}
+
+export interface StateCreateOneInput {
+  create?: Maybe<StateCreateInput>;
+  connect?: Maybe<StateWhereUniqueInput>;
+}
+
+export interface StateCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  abbreviation: String;
+}
+
+export interface PositionCreateManyWithoutClientRefInput {
+  create?: Maybe<
+    PositionCreateWithoutClientRefInput[] | PositionCreateWithoutClientRefInput
+  >;
+  connect?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
+}
+
+export interface PositionCreateWithoutClientRefInput {
+  id?: Maybe<ID_Input>;
+  code: ID_Input;
+  name: String;
+}
+
+export interface ClientUpdateInput {
+  clientId?: Maybe<String>;
+  name?: Maybe<String>;
+  dba?: Maybe<String>;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  stateRef?: Maybe<StateUpdateOneRequiredInput>;
+  zipCode?: Maybe<String>;
+  positions?: Maybe<PositionUpdateManyWithoutClientRefInput>;
+}
+
+export interface StateUpdateOneRequiredInput {
+  create?: Maybe<StateCreateInput>;
+  update?: Maybe<StateUpdateDataInput>;
+  upsert?: Maybe<StateUpsertNestedInput>;
+  connect?: Maybe<StateWhereUniqueInput>;
+}
+
+export interface StateUpdateDataInput {
+  name?: Maybe<String>;
+  abbreviation?: Maybe<String>;
+}
+
+export interface StateUpsertNestedInput {
+  update: StateUpdateDataInput;
+  create: StateCreateInput;
+}
+
+export interface PositionUpdateManyWithoutClientRefInput {
+  create?: Maybe<
+    PositionCreateWithoutClientRefInput[] | PositionCreateWithoutClientRefInput
+  >;
+  delete?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
+  connect?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
+  set?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
+  disconnect?: Maybe<PositionWhereUniqueInput[] | PositionWhereUniqueInput>;
+  update?: Maybe<
+    | PositionUpdateWithWhereUniqueWithoutClientRefInput[]
+    | PositionUpdateWithWhereUniqueWithoutClientRefInput
+  >;
+  upsert?: Maybe<
+    | PositionUpsertWithWhereUniqueWithoutClientRefInput[]
+    | PositionUpsertWithWhereUniqueWithoutClientRefInput
+  >;
+  deleteMany?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
+  updateMany?: Maybe<
+    | PositionUpdateManyWithWhereNestedInput[]
+    | PositionUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PositionUpdateWithWhereUniqueWithoutClientRefInput {
+  where: PositionWhereUniqueInput;
+  data: PositionUpdateWithoutClientRefDataInput;
+}
+
+export interface PositionUpdateWithoutClientRefDataInput {
+  code?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+}
+
+export interface PositionUpsertWithWhereUniqueWithoutClientRefInput {
+  where: PositionWhereUniqueInput;
+  update: PositionUpdateWithoutClientRefDataInput;
+  create: PositionCreateWithoutClientRefInput;
+}
+
+export interface PositionScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  code?: Maybe<ID_Input>;
+  code_not?: Maybe<ID_Input>;
+  code_in?: Maybe<ID_Input[] | ID_Input>;
+  code_not_in?: Maybe<ID_Input[] | ID_Input>;
+  code_lt?: Maybe<ID_Input>;
+  code_lte?: Maybe<ID_Input>;
+  code_gt?: Maybe<ID_Input>;
+  code_gte?: Maybe<ID_Input>;
+  code_contains?: Maybe<ID_Input>;
+  code_not_contains?: Maybe<ID_Input>;
+  code_starts_with?: Maybe<ID_Input>;
+  code_not_starts_with?: Maybe<ID_Input>;
+  code_ends_with?: Maybe<ID_Input>;
+  code_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  AND?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
+  OR?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
+  NOT?: Maybe<PositionScalarWhereInput[] | PositionScalarWhereInput>;
+}
+
+export interface PositionUpdateManyWithWhereNestedInput {
+  where: PositionScalarWhereInput;
+  data: PositionUpdateManyDataInput;
+}
+
+export interface PositionUpdateManyDataInput {
+  code?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+}
+
+export interface ClientUpdateManyMutationInput {
+  clientId?: Maybe<String>;
+  name?: Maybe<String>;
+  dba?: Maybe<String>;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  zipCode?: Maybe<String>;
+}
 
 export interface FriendCreateInput {
   id?: Maybe<ID_Input>;
@@ -572,6 +1111,204 @@ export interface HeroUpdateManyMutationInput {
   name?: Maybe<String>;
 }
 
+export interface PositionCreateInput {
+  id?: Maybe<ID_Input>;
+  code: ID_Input;
+  name: String;
+  clientRef?: Maybe<ClientCreateManyWithoutPositionsInput>;
+}
+
+export interface ClientCreateManyWithoutPositionsInput {
+  create?: Maybe<
+    ClientCreateWithoutPositionsInput[] | ClientCreateWithoutPositionsInput
+  >;
+  connect?: Maybe<ClientWhereUniqueInput[] | ClientWhereUniqueInput>;
+}
+
+export interface ClientCreateWithoutPositionsInput {
+  id?: Maybe<ID_Input>;
+  clientId: String;
+  name: String;
+  dba?: Maybe<String>;
+  address: String;
+  city: String;
+  stateRef: StateCreateOneInput;
+  zipCode: String;
+}
+
+export interface PositionUpdateInput {
+  code?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  clientRef?: Maybe<ClientUpdateManyWithoutPositionsInput>;
+}
+
+export interface ClientUpdateManyWithoutPositionsInput {
+  create?: Maybe<
+    ClientCreateWithoutPositionsInput[] | ClientCreateWithoutPositionsInput
+  >;
+  delete?: Maybe<ClientWhereUniqueInput[] | ClientWhereUniqueInput>;
+  connect?: Maybe<ClientWhereUniqueInput[] | ClientWhereUniqueInput>;
+  set?: Maybe<ClientWhereUniqueInput[] | ClientWhereUniqueInput>;
+  disconnect?: Maybe<ClientWhereUniqueInput[] | ClientWhereUniqueInput>;
+  update?: Maybe<
+    | ClientUpdateWithWhereUniqueWithoutPositionsInput[]
+    | ClientUpdateWithWhereUniqueWithoutPositionsInput
+  >;
+  upsert?: Maybe<
+    | ClientUpsertWithWhereUniqueWithoutPositionsInput[]
+    | ClientUpsertWithWhereUniqueWithoutPositionsInput
+  >;
+  deleteMany?: Maybe<ClientScalarWhereInput[] | ClientScalarWhereInput>;
+  updateMany?: Maybe<
+    | ClientUpdateManyWithWhereNestedInput[]
+    | ClientUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface ClientUpdateWithWhereUniqueWithoutPositionsInput {
+  where: ClientWhereUniqueInput;
+  data: ClientUpdateWithoutPositionsDataInput;
+}
+
+export interface ClientUpdateWithoutPositionsDataInput {
+  clientId?: Maybe<String>;
+  name?: Maybe<String>;
+  dba?: Maybe<String>;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  stateRef?: Maybe<StateUpdateOneRequiredInput>;
+  zipCode?: Maybe<String>;
+}
+
+export interface ClientUpsertWithWhereUniqueWithoutPositionsInput {
+  where: ClientWhereUniqueInput;
+  update: ClientUpdateWithoutPositionsDataInput;
+  create: ClientCreateWithoutPositionsInput;
+}
+
+export interface ClientScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  clientId?: Maybe<String>;
+  clientId_not?: Maybe<String>;
+  clientId_in?: Maybe<String[] | String>;
+  clientId_not_in?: Maybe<String[] | String>;
+  clientId_lt?: Maybe<String>;
+  clientId_lte?: Maybe<String>;
+  clientId_gt?: Maybe<String>;
+  clientId_gte?: Maybe<String>;
+  clientId_contains?: Maybe<String>;
+  clientId_not_contains?: Maybe<String>;
+  clientId_starts_with?: Maybe<String>;
+  clientId_not_starts_with?: Maybe<String>;
+  clientId_ends_with?: Maybe<String>;
+  clientId_not_ends_with?: Maybe<String>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  dba?: Maybe<String>;
+  dba_not?: Maybe<String>;
+  dba_in?: Maybe<String[] | String>;
+  dba_not_in?: Maybe<String[] | String>;
+  dba_lt?: Maybe<String>;
+  dba_lte?: Maybe<String>;
+  dba_gt?: Maybe<String>;
+  dba_gte?: Maybe<String>;
+  dba_contains?: Maybe<String>;
+  dba_not_contains?: Maybe<String>;
+  dba_starts_with?: Maybe<String>;
+  dba_not_starts_with?: Maybe<String>;
+  dba_ends_with?: Maybe<String>;
+  dba_not_ends_with?: Maybe<String>;
+  address?: Maybe<String>;
+  address_not?: Maybe<String>;
+  address_in?: Maybe<String[] | String>;
+  address_not_in?: Maybe<String[] | String>;
+  address_lt?: Maybe<String>;
+  address_lte?: Maybe<String>;
+  address_gt?: Maybe<String>;
+  address_gte?: Maybe<String>;
+  address_contains?: Maybe<String>;
+  address_not_contains?: Maybe<String>;
+  address_starts_with?: Maybe<String>;
+  address_not_starts_with?: Maybe<String>;
+  address_ends_with?: Maybe<String>;
+  address_not_ends_with?: Maybe<String>;
+  city?: Maybe<String>;
+  city_not?: Maybe<String>;
+  city_in?: Maybe<String[] | String>;
+  city_not_in?: Maybe<String[] | String>;
+  city_lt?: Maybe<String>;
+  city_lte?: Maybe<String>;
+  city_gt?: Maybe<String>;
+  city_gte?: Maybe<String>;
+  city_contains?: Maybe<String>;
+  city_not_contains?: Maybe<String>;
+  city_starts_with?: Maybe<String>;
+  city_not_starts_with?: Maybe<String>;
+  city_ends_with?: Maybe<String>;
+  city_not_ends_with?: Maybe<String>;
+  zipCode?: Maybe<String>;
+  zipCode_not?: Maybe<String>;
+  zipCode_in?: Maybe<String[] | String>;
+  zipCode_not_in?: Maybe<String[] | String>;
+  zipCode_lt?: Maybe<String>;
+  zipCode_lte?: Maybe<String>;
+  zipCode_gt?: Maybe<String>;
+  zipCode_gte?: Maybe<String>;
+  zipCode_contains?: Maybe<String>;
+  zipCode_not_contains?: Maybe<String>;
+  zipCode_starts_with?: Maybe<String>;
+  zipCode_not_starts_with?: Maybe<String>;
+  zipCode_ends_with?: Maybe<String>;
+  zipCode_not_ends_with?: Maybe<String>;
+  AND?: Maybe<ClientScalarWhereInput[] | ClientScalarWhereInput>;
+  OR?: Maybe<ClientScalarWhereInput[] | ClientScalarWhereInput>;
+  NOT?: Maybe<ClientScalarWhereInput[] | ClientScalarWhereInput>;
+}
+
+export interface ClientUpdateManyWithWhereNestedInput {
+  where: ClientScalarWhereInput;
+  data: ClientUpdateManyDataInput;
+}
+
+export interface ClientUpdateManyDataInput {
+  clientId?: Maybe<String>;
+  name?: Maybe<String>;
+  dba?: Maybe<String>;
+  address?: Maybe<String>;
+  city?: Maybe<String>;
+  zipCode?: Maybe<String>;
+}
+
+export interface PositionUpdateManyMutationInput {
+  code?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+}
+
 export interface PostCreateInput {
   id?: Maybe<ID_Input>;
   title: String;
@@ -618,6 +1355,16 @@ export interface UserUpsertWithoutPostsInput {
 export interface PostUpdateManyMutationInput {
   title?: Maybe<String>;
   published?: Maybe<Boolean>;
+}
+
+export interface StateUpdateInput {
+  name?: Maybe<String>;
+  abbreviation?: Maybe<String>;
+}
+
+export interface StateUpdateManyMutationInput {
+  name?: Maybe<String>;
+  abbreviation?: Maybe<String>;
 }
 
 export interface UserCreateInput {
@@ -731,6 +1478,17 @@ export interface UserUpdateManyMutationInput {
   name?: Maybe<String>;
 }
 
+export interface ClientSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<ClientWhereInput>;
+  AND?: Maybe<ClientSubscriptionWhereInput[] | ClientSubscriptionWhereInput>;
+  OR?: Maybe<ClientSubscriptionWhereInput[] | ClientSubscriptionWhereInput>;
+  NOT?: Maybe<ClientSubscriptionWhereInput[] | ClientSubscriptionWhereInput>;
+}
+
 export interface FriendSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -753,6 +1511,21 @@ export interface HeroSubscriptionWhereInput {
   NOT?: Maybe<HeroSubscriptionWhereInput[] | HeroSubscriptionWhereInput>;
 }
 
+export interface PositionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PositionWhereInput>;
+  AND?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+  OR?: Maybe<PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput>;
+  NOT?: Maybe<
+    PositionSubscriptionWhereInput[] | PositionSubscriptionWhereInput
+  >;
+}
+
 export interface PostSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -762,6 +1535,17 @@ export interface PostSubscriptionWhereInput {
   AND?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
   OR?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
   NOT?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
+}
+
+export interface StateSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<StateWhereInput>;
+  AND?: Maybe<StateSubscriptionWhereInput[] | StateSubscriptionWhereInput>;
+  OR?: Maybe<StateSubscriptionWhereInput[] | StateSubscriptionWhereInput>;
+  NOT?: Maybe<StateSubscriptionWhereInput[] | StateSubscriptionWhereInput>;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -777,6 +1561,240 @@ export interface UserSubscriptionWhereInput {
 
 export interface NodeNode {
   id: ID_Output;
+}
+
+export interface Client {
+  id: ID_Output;
+  clientId: String;
+  name: String;
+  dba?: String;
+  address: String;
+  city: String;
+  zipCode: String;
+}
+
+export interface ClientPromise extends Promise<Client>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  clientId: () => Promise<String>;
+  name: () => Promise<String>;
+  dba: () => Promise<String>;
+  address: () => Promise<String>;
+  city: () => Promise<String>;
+  stateRef: <T = StatePromise>() => T;
+  zipCode: () => Promise<String>;
+  positions: <T = FragmentableArray<Position>>(args?: {
+    where?: PositionWhereInput;
+    orderBy?: PositionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ClientSubscription
+  extends Promise<AsyncIterator<Client>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  clientId: () => Promise<AsyncIterator<String>>;
+  name: () => Promise<AsyncIterator<String>>;
+  dba: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
+  city: () => Promise<AsyncIterator<String>>;
+  stateRef: <T = StateSubscription>() => T;
+  zipCode: () => Promise<AsyncIterator<String>>;
+  positions: <T = Promise<AsyncIterator<PositionSubscription>>>(args?: {
+    where?: PositionWhereInput;
+    orderBy?: PositionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ClientNullablePromise
+  extends Promise<Client | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  clientId: () => Promise<String>;
+  name: () => Promise<String>;
+  dba: () => Promise<String>;
+  address: () => Promise<String>;
+  city: () => Promise<String>;
+  stateRef: <T = StatePromise>() => T;
+  zipCode: () => Promise<String>;
+  positions: <T = FragmentableArray<Position>>(args?: {
+    where?: PositionWhereInput;
+    orderBy?: PositionOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface State {
+  id: ID_Output;
+  name: String;
+  abbreviation: String;
+}
+
+export interface StatePromise extends Promise<State>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  abbreviation: () => Promise<String>;
+}
+
+export interface StateSubscription
+  extends Promise<AsyncIterator<State>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  abbreviation: () => Promise<AsyncIterator<String>>;
+}
+
+export interface StateNullablePromise
+  extends Promise<State | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  abbreviation: () => Promise<String>;
+}
+
+export interface Position {
+  id: ID_Output;
+  code: ID_Output;
+  name: String;
+}
+
+export interface PositionPromise extends Promise<Position>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  code: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  clientRef: <T = FragmentableArray<Client>>(args?: {
+    where?: ClientWhereInput;
+    orderBy?: ClientOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface PositionSubscription
+  extends Promise<AsyncIterator<Position>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  code: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  clientRef: <T = Promise<AsyncIterator<ClientSubscription>>>(args?: {
+    where?: ClientWhereInput;
+    orderBy?: ClientOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface PositionNullablePromise
+  extends Promise<Position | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  code: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  clientRef: <T = FragmentableArray<Client>>(args?: {
+    where?: ClientWhereInput;
+    orderBy?: ClientOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface ClientConnection {
+  pageInfo: PageInfo;
+  edges: ClientEdge[];
+}
+
+export interface ClientConnectionPromise
+  extends Promise<ClientConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ClientEdge>>() => T;
+  aggregate: <T = AggregateClientPromise>() => T;
+}
+
+export interface ClientConnectionSubscription
+  extends Promise<AsyncIterator<ClientConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ClientEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateClientSubscription>() => T;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ClientEdge {
+  node: Client;
+  cursor: String;
+}
+
+export interface ClientEdgePromise extends Promise<ClientEdge>, Fragmentable {
+  node: <T = ClientPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ClientEdgeSubscription
+  extends Promise<AsyncIterator<ClientEdge>>,
+    Fragmentable {
+  node: <T = ClientSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateClient {
+  count: Int;
+}
+
+export interface AggregateClientPromise
+  extends Promise<AggregateClient>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateClientSubscription
+  extends Promise<AsyncIterator<AggregateClient>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface Friend {
@@ -878,29 +1896,6 @@ export interface FriendConnectionSubscription
   aggregate: <T = AggregateFriendSubscription>() => T;
 }
 
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface FriendEdge {
   node: Friend;
   cursor: String;
@@ -984,6 +1979,62 @@ export interface AggregateHeroPromise
 
 export interface AggregateHeroSubscription
   extends Promise<AsyncIterator<AggregateHero>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PositionConnection {
+  pageInfo: PageInfo;
+  edges: PositionEdge[];
+}
+
+export interface PositionConnectionPromise
+  extends Promise<PositionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PositionEdge>>() => T;
+  aggregate: <T = AggregatePositionPromise>() => T;
+}
+
+export interface PositionConnectionSubscription
+  extends Promise<AsyncIterator<PositionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PositionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePositionSubscription>() => T;
+}
+
+export interface PositionEdge {
+  node: Position;
+  cursor: String;
+}
+
+export interface PositionEdgePromise
+  extends Promise<PositionEdge>,
+    Fragmentable {
+  node: <T = PositionPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PositionEdgeSubscription
+  extends Promise<AsyncIterator<PositionEdge>>,
+    Fragmentable {
+  node: <T = PositionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePosition {
+  count: Int;
+}
+
+export interface AggregatePositionPromise
+  extends Promise<AggregatePosition>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePositionSubscription
+  extends Promise<AsyncIterator<AggregatePosition>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -1128,6 +2179,60 @@ export interface AggregatePostSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface StateConnection {
+  pageInfo: PageInfo;
+  edges: StateEdge[];
+}
+
+export interface StateConnectionPromise
+  extends Promise<StateConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<StateEdge>>() => T;
+  aggregate: <T = AggregateStatePromise>() => T;
+}
+
+export interface StateConnectionSubscription
+  extends Promise<AsyncIterator<StateConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<StateEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateStateSubscription>() => T;
+}
+
+export interface StateEdge {
+  node: State;
+  cursor: String;
+}
+
+export interface StateEdgePromise extends Promise<StateEdge>, Fragmentable {
+  node: <T = StatePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface StateEdgeSubscription
+  extends Promise<AsyncIterator<StateEdge>>,
+    Fragmentable {
+  node: <T = StateSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateState {
+  count: Int;
+}
+
+export interface AggregateStatePromise
+  extends Promise<AggregateState>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateStateSubscription
+  extends Promise<AsyncIterator<AggregateState>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface UserConnection {
   pageInfo: PageInfo;
   edges: UserEdge[];
@@ -1196,6 +2301,65 @@ export interface BatchPayloadSubscription
   extends Promise<AsyncIterator<BatchPayload>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface ClientSubscriptionPayload {
+  mutation: MutationType;
+  node: Client;
+  updatedFields: String[];
+  previousValues: ClientPreviousValues;
+}
+
+export interface ClientSubscriptionPayloadPromise
+  extends Promise<ClientSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ClientPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ClientPreviousValuesPromise>() => T;
+}
+
+export interface ClientSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ClientSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ClientSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ClientPreviousValuesSubscription>() => T;
+}
+
+export interface ClientPreviousValues {
+  id: ID_Output;
+  clientId: String;
+  name: String;
+  dba?: String;
+  address: String;
+  city: String;
+  zipCode: String;
+}
+
+export interface ClientPreviousValuesPromise
+  extends Promise<ClientPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  clientId: () => Promise<String>;
+  name: () => Promise<String>;
+  dba: () => Promise<String>;
+  address: () => Promise<String>;
+  city: () => Promise<String>;
+  zipCode: () => Promise<String>;
+}
+
+export interface ClientPreviousValuesSubscription
+  extends Promise<AsyncIterator<ClientPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  clientId: () => Promise<AsyncIterator<String>>;
+  name: () => Promise<AsyncIterator<String>>;
+  dba: () => Promise<AsyncIterator<String>>;
+  address: () => Promise<AsyncIterator<String>>;
+  city: () => Promise<AsyncIterator<String>>;
+  zipCode: () => Promise<AsyncIterator<String>>;
 }
 
 export interface FriendSubscriptionPayload {
@@ -1286,6 +2450,53 @@ export interface HeroPreviousValuesSubscription
   name: () => Promise<AsyncIterator<String>>;
 }
 
+export interface PositionSubscriptionPayload {
+  mutation: MutationType;
+  node: Position;
+  updatedFields: String[];
+  previousValues: PositionPreviousValues;
+}
+
+export interface PositionSubscriptionPayloadPromise
+  extends Promise<PositionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PositionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PositionPreviousValuesPromise>() => T;
+}
+
+export interface PositionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PositionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PositionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PositionPreviousValuesSubscription>() => T;
+}
+
+export interface PositionPreviousValues {
+  id: ID_Output;
+  code: ID_Output;
+  name: String;
+}
+
+export interface PositionPreviousValuesPromise
+  extends Promise<PositionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  code: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+}
+
+export interface PositionPreviousValuesSubscription
+  extends Promise<AsyncIterator<PositionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  code: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+}
+
 export interface PostSubscriptionPayload {
   mutation: MutationType;
   node: Post;
@@ -1331,6 +2542,53 @@ export interface PostPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   title: () => Promise<AsyncIterator<String>>;
   published: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface StateSubscriptionPayload {
+  mutation: MutationType;
+  node: State;
+  updatedFields: String[];
+  previousValues: StatePreviousValues;
+}
+
+export interface StateSubscriptionPayloadPromise
+  extends Promise<StateSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = StatePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = StatePreviousValuesPromise>() => T;
+}
+
+export interface StateSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<StateSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = StateSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = StatePreviousValuesSubscription>() => T;
+}
+
+export interface StatePreviousValues {
+  id: ID_Output;
+  name: String;
+  abbreviation: String;
+}
+
+export interface StatePreviousValuesPromise
+  extends Promise<StatePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  abbreviation: () => Promise<String>;
+}
+
+export interface StatePreviousValuesSubscription
+  extends Promise<AsyncIterator<StatePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  abbreviation: () => Promise<AsyncIterator<String>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -1409,6 +2667,10 @@ export type Long = string;
 
 export const models: Model[] = [
   {
+    name: "State",
+    embedded: false
+  },
+  {
     name: "User",
     embedded: false
   },
@@ -1422,6 +2684,14 @@ export const models: Model[] = [
   },
   {
     name: "Friend",
+    embedded: false
+  },
+  {
+    name: "Client",
+    embedded: false
+  },
+  {
+    name: "Position",
     embedded: false
   }
 ];

@@ -15,10 +15,14 @@ export interface NexusPrismaTypes {
   objectTypes: {
     fields: {
       Query: QueryObject
+      State: StateObject
+      StateConnection: StateConnectionObject
+      PageInfo: PageInfoObject
+      StateEdge: StateEdgeObject
+      AggregateState: AggregateStateObject
       User: UserObject
       Post: PostObject
       UserConnection: UserConnectionObject
-      PageInfo: PageInfoObject
       UserEdge: UserEdgeObject
       AggregateUser: AggregateUserObject
       PostConnection: PostConnectionObject
@@ -32,9 +36,19 @@ export interface NexusPrismaTypes {
       FriendConnection: FriendConnectionObject
       FriendEdge: FriendEdgeObject
       AggregateFriend: AggregateFriendObject
+      Client: ClientObject
+      Position: PositionObject
+      ClientConnection: ClientConnectionObject
+      ClientEdge: ClientEdgeObject
+      AggregateClient: AggregateClientObject
+      PositionConnection: PositionConnectionObject
+      PositionEdge: PositionEdgeObject
+      AggregatePosition: AggregatePositionObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
+      StateSubscriptionPayload: StateSubscriptionPayloadObject
+      StatePreviousValues: StatePreviousValuesObject
       UserSubscriptionPayload: UserSubscriptionPayloadObject
       UserPreviousValues: UserPreviousValuesObject
       PostSubscriptionPayload: PostSubscriptionPayloadObject
@@ -43,13 +57,21 @@ export interface NexusPrismaTypes {
       HeroPreviousValues: HeroPreviousValuesObject
       FriendSubscriptionPayload: FriendSubscriptionPayloadObject
       FriendPreviousValues: FriendPreviousValuesObject
+      ClientSubscriptionPayload: ClientSubscriptionPayloadObject
+      ClientPreviousValues: ClientPreviousValuesObject
+      PositionSubscriptionPayload: PositionSubscriptionPayloadObject
+      PositionPreviousValues: PositionPreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
+      State: StateFieldDetails
+      StateConnection: StateConnectionFieldDetails
+      PageInfo: PageInfoFieldDetails
+      StateEdge: StateEdgeFieldDetails
+      AggregateState: AggregateStateFieldDetails
       User: UserFieldDetails
       Post: PostFieldDetails
       UserConnection: UserConnectionFieldDetails
-      PageInfo: PageInfoFieldDetails
       UserEdge: UserEdgeFieldDetails
       AggregateUser: AggregateUserFieldDetails
       PostConnection: PostConnectionFieldDetails
@@ -63,9 +85,19 @@ export interface NexusPrismaTypes {
       FriendConnection: FriendConnectionFieldDetails
       FriendEdge: FriendEdgeFieldDetails
       AggregateFriend: AggregateFriendFieldDetails
+      Client: ClientFieldDetails
+      Position: PositionFieldDetails
+      ClientConnection: ClientConnectionFieldDetails
+      ClientEdge: ClientEdgeFieldDetails
+      AggregateClient: AggregateClientFieldDetails
+      PositionConnection: PositionConnectionFieldDetails
+      PositionEdge: PositionEdgeFieldDetails
+      AggregatePosition: AggregatePositionFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
+      StateSubscriptionPayload: StateSubscriptionPayloadFieldDetails
+      StatePreviousValues: StatePreviousValuesFieldDetails
       UserSubscriptionPayload: UserSubscriptionPayloadFieldDetails
       UserPreviousValues: UserPreviousValuesFieldDetails
       PostSubscriptionPayload: PostSubscriptionPayloadFieldDetails
@@ -74,10 +106,16 @@ export interface NexusPrismaTypes {
       HeroPreviousValues: HeroPreviousValuesFieldDetails
       FriendSubscriptionPayload: FriendSubscriptionPayloadFieldDetails
       FriendPreviousValues: FriendPreviousValuesFieldDetails
+      ClientSubscriptionPayload: ClientSubscriptionPayloadFieldDetails
+      ClientPreviousValues: ClientPreviousValuesFieldDetails
+      PositionSubscriptionPayload: PositionSubscriptionPayloadFieldDetails
+      PositionPreviousValues: PositionPreviousValuesFieldDetails
     }
   }
   inputTypes: {
     fields: {
+      StateWhereUniqueInput: StateWhereUniqueInputInputObject
+      StateWhereInput: StateWhereInputInputObject
       UserWhereUniqueInput: UserWhereUniqueInputInputObject
       PostWhereInput: PostWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
@@ -86,6 +124,13 @@ export interface NexusPrismaTypes {
       FriendWhereInput: FriendWhereInputInputObject
       HeroWhereInput: HeroWhereInputInputObject
       FriendWhereUniqueInput: FriendWhereUniqueInputInputObject
+      ClientWhereUniqueInput: ClientWhereUniqueInputInputObject
+      PositionWhereInput: PositionWhereInputInputObject
+      ClientWhereInput: ClientWhereInputInputObject
+      PositionWhereUniqueInput: PositionWhereUniqueInputInputObject
+      StateCreateInput: StateCreateInputInputObject
+      StateUpdateInput: StateUpdateInputInputObject
+      StateUpdateManyMutationInput: StateUpdateManyMutationInputInputObject
       UserCreateInput: UserCreateInputInputObject
       PostCreateManyWithoutAuthorInput: PostCreateManyWithoutAuthorInputInputObject
       PostCreateWithoutAuthorInput: PostCreateWithoutAuthorInputInputObject
@@ -126,17 +171,51 @@ export interface NexusPrismaTypes {
       HeroUpdateWithoutFriendsDataInput: HeroUpdateWithoutFriendsDataInputInputObject
       HeroUpsertWithoutFriendsInput: HeroUpsertWithoutFriendsInputInputObject
       FriendUpdateManyMutationInput: FriendUpdateManyMutationInputInputObject
+      ClientCreateInput: ClientCreateInputInputObject
+      StateCreateOneInput: StateCreateOneInputInputObject
+      PositionCreateManyWithoutClientRefInput: PositionCreateManyWithoutClientRefInputInputObject
+      PositionCreateWithoutClientRefInput: PositionCreateWithoutClientRefInputInputObject
+      ClientUpdateInput: ClientUpdateInputInputObject
+      StateUpdateOneRequiredInput: StateUpdateOneRequiredInputInputObject
+      StateUpdateDataInput: StateUpdateDataInputInputObject
+      StateUpsertNestedInput: StateUpsertNestedInputInputObject
+      PositionUpdateManyWithoutClientRefInput: PositionUpdateManyWithoutClientRefInputInputObject
+      PositionUpdateWithWhereUniqueWithoutClientRefInput: PositionUpdateWithWhereUniqueWithoutClientRefInputInputObject
+      PositionUpdateWithoutClientRefDataInput: PositionUpdateWithoutClientRefDataInputInputObject
+      PositionUpsertWithWhereUniqueWithoutClientRefInput: PositionUpsertWithWhereUniqueWithoutClientRefInputInputObject
+      PositionScalarWhereInput: PositionScalarWhereInputInputObject
+      PositionUpdateManyWithWhereNestedInput: PositionUpdateManyWithWhereNestedInputInputObject
+      PositionUpdateManyDataInput: PositionUpdateManyDataInputInputObject
+      ClientUpdateManyMutationInput: ClientUpdateManyMutationInputInputObject
+      PositionCreateInput: PositionCreateInputInputObject
+      ClientCreateManyWithoutPositionsInput: ClientCreateManyWithoutPositionsInputInputObject
+      ClientCreateWithoutPositionsInput: ClientCreateWithoutPositionsInputInputObject
+      PositionUpdateInput: PositionUpdateInputInputObject
+      ClientUpdateManyWithoutPositionsInput: ClientUpdateManyWithoutPositionsInputInputObject
+      ClientUpdateWithWhereUniqueWithoutPositionsInput: ClientUpdateWithWhereUniqueWithoutPositionsInputInputObject
+      ClientUpdateWithoutPositionsDataInput: ClientUpdateWithoutPositionsDataInputInputObject
+      ClientUpsertWithWhereUniqueWithoutPositionsInput: ClientUpsertWithWhereUniqueWithoutPositionsInputInputObject
+      ClientScalarWhereInput: ClientScalarWhereInputInputObject
+      ClientUpdateManyWithWhereNestedInput: ClientUpdateManyWithWhereNestedInputInputObject
+      ClientUpdateManyDataInput: ClientUpdateManyDataInputInputObject
+      PositionUpdateManyMutationInput: PositionUpdateManyMutationInputInputObject
+      StateSubscriptionWhereInput: StateSubscriptionWhereInputInputObject
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
       PostSubscriptionWhereInput: PostSubscriptionWhereInputInputObject
       HeroSubscriptionWhereInput: HeroSubscriptionWhereInputInputObject
       FriendSubscriptionWhereInput: FriendSubscriptionWhereInputInputObject
+      ClientSubscriptionWhereInput: ClientSubscriptionWhereInputInputObject
+      PositionSubscriptionWhereInput: PositionSubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
+    StateOrderByInput: StateOrderByInputValues,
     PostOrderByInput: PostOrderByInputValues,
     UserOrderByInput: UserOrderByInputValues,
     FriendOrderByInput: FriendOrderByInputValues,
     HeroOrderByInput: HeroOrderByInputValues,
+    PositionOrderByInput: PositionOrderByInputValues,
+    ClientOrderByInput: ClientOrderByInputValues,
     MutationType: MutationTypeValues,
   }
 }
@@ -145,6 +224,9 @@ export interface NexusPrismaTypes {
 
 type QueryObject =
   | QueryFields
+  | { name: 'state', args?: QueryStateArgs[] | false, alias?: string  } 
+  | { name: 'states', args?: QueryStatesArgs[] | false, alias?: string  } 
+  | { name: 'statesConnection', args?: QueryStatesConnectionArgs[] | false, alias?: string  } 
   | { name: 'user', args?: QueryUserArgs[] | false, alias?: string  } 
   | { name: 'users', args?: QueryUsersArgs[] | false, alias?: string  } 
   | { name: 'usersConnection', args?: QueryUsersConnectionArgs[] | false, alias?: string  } 
@@ -157,8 +239,17 @@ type QueryObject =
   | { name: 'friend', args?: QueryFriendArgs[] | false, alias?: string  } 
   | { name: 'friends', args?: QueryFriendsArgs[] | false, alias?: string  } 
   | { name: 'friendsConnection', args?: QueryFriendsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'client', args?: QueryClientArgs[] | false, alias?: string  } 
+  | { name: 'clients', args?: QueryClientsArgs[] | false, alias?: string  } 
+  | { name: 'clientsConnection', args?: QueryClientsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'position', args?: QueryPositionArgs[] | false, alias?: string  } 
+  | { name: 'positions', args?: QueryPositionsArgs[] | false, alias?: string  } 
+  | { name: 'positionsConnection', args?: QueryPositionsConnectionArgs[] | false, alias?: string  } 
 
 type QueryFields =
+  | 'state'
+  | 'states'
+  | 'statesConnection'
   | 'user'
   | 'users'
   | 'usersConnection'
@@ -171,8 +262,32 @@ type QueryFields =
   | 'friend'
   | 'friends'
   | 'friendsConnection'
+  | 'client'
+  | 'clients'
+  | 'clientsConnection'
+  | 'position'
+  | 'positions'
+  | 'positionsConnection'
 
 
+type QueryStateArgs =
+  | 'where'
+type QueryStatesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryStatesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
 type QueryUserArgs =
   | 'where'
 type QueryUsersArgs =
@@ -245,9 +360,84 @@ type QueryFriendsConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
+type QueryClientArgs =
+  | 'where'
+type QueryClientsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryClientsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryPositionArgs =
+  | 'where'
+type QueryPositionsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryPositionsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
   
 
 export interface QueryFieldDetails {
+  state: {
+    type: 'State'
+    args: Record<QueryStateArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: StateWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.State | null> | prisma.State | null
+  }
+  states: {
+    type: 'State'
+    args: Record<QueryStatesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: StateWhereInput | null, orderBy?: prisma.StateOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.State[]> | prisma.State[]
+  }
+  statesConnection: {
+    type: 'StateConnection'
+    args: Record<QueryStatesConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: StateWhereInput | null, orderBy?: prisma.StateOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.StateConnection> | prisma.StateConnection
+  }
   user: {
     type: 'User'
     args: Record<QueryUserArgs, core.NexusArgDef<string>>
@@ -403,6 +593,309 @@ export interface QueryFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.FriendConnection> | prisma.FriendConnection
+  }
+  client: {
+    type: 'Client'
+    args: Record<QueryClientArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: ClientWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Client | null> | prisma.Client | null
+  }
+  clients: {
+    type: 'Client'
+    args: Record<QueryClientsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: ClientWhereInput | null, orderBy?: prisma.ClientOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Client[]> | prisma.Client[]
+  }
+  clientsConnection: {
+    type: 'ClientConnection'
+    args: Record<QueryClientsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: ClientWhereInput | null, orderBy?: prisma.ClientOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ClientConnection> | prisma.ClientConnection
+  }
+  position: {
+    type: 'Position'
+    args: Record<QueryPositionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: PositionWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Position | null> | prisma.Position | null
+  }
+  positions: {
+    type: 'Position'
+    args: Record<QueryPositionsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: PositionWhereInput | null, orderBy?: prisma.PositionOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Position[]> | prisma.Position[]
+  }
+  positionsConnection: {
+    type: 'PositionConnection'
+    args: Record<QueryPositionsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: PositionWhereInput | null, orderBy?: prisma.PositionOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PositionConnection> | prisma.PositionConnection
+  }
+}
+  
+
+// Types for State
+
+type StateObject =
+  | StateFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'abbreviation', args?: [] | false, alias?: string  } 
+
+type StateFields =
+  | 'id'
+  | 'name'
+  | 'abbreviation'
+
+
+
+  
+
+export interface StateFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  abbreviation: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for StateConnection
+
+type StateConnectionObject =
+  | StateConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type StateConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface StateConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"StateConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'StateEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"StateConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.StateEdge[]> | prisma.StateEdge[]
+  }
+  aggregate: {
+    type: 'AggregateState'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"StateConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateState> | prisma.AggregateState
+  }
+}
+  
+
+// Types for PageInfo
+
+type PageInfoObject =
+  | PageInfoFields
+  | { name: 'hasNextPage', args?: [] | false, alias?: string  } 
+  | { name: 'hasPreviousPage', args?: [] | false, alias?: string  } 
+  | { name: 'startCursor', args?: [] | false, alias?: string  } 
+  | { name: 'endCursor', args?: [] | false, alias?: string  } 
+
+type PageInfoFields =
+  | 'hasNextPage'
+  | 'hasPreviousPage'
+  | 'startCursor'
+  | 'endCursor'
+
+
+
+  
+
+export interface PageInfoFieldDetails {
+  hasNextPage: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  hasPreviousPage: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  startCursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  endCursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+}
+  
+
+// Types for StateEdge
+
+type StateEdgeObject =
+  | StateEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type StateEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface StateEdgeFieldDetails {
+  node: {
+    type: 'State'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"StateEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.State> | prisma.State
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateState
+
+type AggregateStateObject =
+  | AggregateStateFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateStateFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateStateFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
   }
 }
   
@@ -590,61 +1083,6 @@ export interface UserConnectionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AggregateUser> | prisma.AggregateUser
-  }
-}
-  
-
-// Types for PageInfo
-
-type PageInfoObject =
-  | PageInfoFields
-  | { name: 'hasNextPage', args?: [] | false, alias?: string  } 
-  | { name: 'hasPreviousPage', args?: [] | false, alias?: string  } 
-  | { name: 'startCursor', args?: [] | false, alias?: string  } 
-  | { name: 'endCursor', args?: [] | false, alias?: string  } 
-
-type PageInfoFields =
-  | 'hasNextPage'
-  | 'hasPreviousPage'
-  | 'startCursor'
-  | 'endCursor'
-
-
-
-  
-
-export interface PageInfoFieldDetails {
-  hasNextPage: {
-    type: 'Boolean'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  hasPreviousPage: {
-    type: 'Boolean'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  startCursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  endCursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
   }
 }
   
@@ -1196,10 +1634,455 @@ export interface AggregateFriendFieldDetails {
 }
   
 
+// Types for Client
+
+type ClientObject =
+  | ClientFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'clientId', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'dba', args?: [] | false, alias?: string  } 
+  | { name: 'address', args?: [] | false, alias?: string  } 
+  | { name: 'city', args?: [] | false, alias?: string  } 
+  | { name: 'stateRef', args?: [] | false, alias?: string  } 
+  | { name: 'zipCode', args?: [] | false, alias?: string  } 
+  | { name: 'positions', args?: ClientPositionsArgs[] | false, alias?: string  } 
+
+type ClientFields =
+  | 'id'
+  | 'clientId'
+  | 'name'
+  | 'dba'
+  | 'address'
+  | 'city'
+  | 'stateRef'
+  | 'zipCode'
+  | 'positions'
+
+
+type ClientPositionsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface ClientFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  clientId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  dba: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  address: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  city: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  stateRef: {
+    type: 'State'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Client">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.State> | prisma.State
+  }
+  zipCode: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  positions: {
+    type: 'Position'
+    args: Record<ClientPositionsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Client">,
+      args: { where?: PositionWhereInput | null, orderBy?: prisma.PositionOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Position[]> | prisma.Position[]
+  }
+}
+  
+
+// Types for Position
+
+type PositionObject =
+  | PositionFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'code', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'clientRef', args?: PositionClientRefArgs[] | false, alias?: string  } 
+
+type PositionFields =
+  | 'id'
+  | 'code'
+  | 'name'
+  | 'clientRef'
+
+
+type PositionClientRefArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface PositionFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  code: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  clientRef: {
+    type: 'Client'
+    args: Record<PositionClientRefArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Position">,
+      args: { where?: ClientWhereInput | null, orderBy?: prisma.ClientOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Client[]> | prisma.Client[]
+  }
+}
+  
+
+// Types for ClientConnection
+
+type ClientConnectionObject =
+  | ClientConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type ClientConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface ClientConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ClientConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'ClientEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ClientConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ClientEdge[]> | prisma.ClientEdge[]
+  }
+  aggregate: {
+    type: 'AggregateClient'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ClientConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateClient> | prisma.AggregateClient
+  }
+}
+  
+
+// Types for ClientEdge
+
+type ClientEdgeObject =
+  | ClientEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type ClientEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface ClientEdgeFieldDetails {
+  node: {
+    type: 'Client'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ClientEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Client> | prisma.Client
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateClient
+
+type AggregateClientObject =
+  | AggregateClientFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateClientFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateClientFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for PositionConnection
+
+type PositionConnectionObject =
+  | PositionConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type PositionConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface PositionConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PositionConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'PositionEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PositionConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PositionEdge[]> | prisma.PositionEdge[]
+  }
+  aggregate: {
+    type: 'AggregatePosition'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PositionConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregatePosition> | prisma.AggregatePosition
+  }
+}
+  
+
+// Types for PositionEdge
+
+type PositionEdgeObject =
+  | PositionEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type PositionEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface PositionEdgeFieldDetails {
+  node: {
+    type: 'Position'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PositionEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Position> | prisma.Position
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregatePosition
+
+type AggregatePositionObject =
+  | AggregatePositionFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregatePositionFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregatePositionFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 // Types for Mutation
 
 type MutationObject =
   | MutationFields
+  | { name: 'createState', args?: MutationCreateStateArgs[] | false, alias?: string  } 
+  | { name: 'updateState', args?: MutationUpdateStateArgs[] | false, alias?: string  } 
+  | { name: 'updateManyStates', args?: MutationUpdateManyStatesArgs[] | false, alias?: string  } 
+  | { name: 'upsertState', args?: MutationUpsertStateArgs[] | false, alias?: string  } 
+  | { name: 'deleteState', args?: MutationDeleteStateArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyStates', args?: MutationDeleteManyStatesArgs[] | false, alias?: string  } 
   | { name: 'createUser', args?: MutationCreateUserArgs[] | false, alias?: string  } 
   | { name: 'updateUser', args?: MutationUpdateUserArgs[] | false, alias?: string  } 
   | { name: 'updateManyUsers', args?: MutationUpdateManyUsersArgs[] | false, alias?: string  } 
@@ -1224,8 +2107,26 @@ type MutationObject =
   | { name: 'upsertFriend', args?: MutationUpsertFriendArgs[] | false, alias?: string  } 
   | { name: 'deleteFriend', args?: MutationDeleteFriendArgs[] | false, alias?: string  } 
   | { name: 'deleteManyFriends', args?: MutationDeleteManyFriendsArgs[] | false, alias?: string  } 
+  | { name: 'createClient', args?: MutationCreateClientArgs[] | false, alias?: string  } 
+  | { name: 'updateClient', args?: MutationUpdateClientArgs[] | false, alias?: string  } 
+  | { name: 'updateManyClients', args?: MutationUpdateManyClientsArgs[] | false, alias?: string  } 
+  | { name: 'upsertClient', args?: MutationUpsertClientArgs[] | false, alias?: string  } 
+  | { name: 'deleteClient', args?: MutationDeleteClientArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyClients', args?: MutationDeleteManyClientsArgs[] | false, alias?: string  } 
+  | { name: 'createPosition', args?: MutationCreatePositionArgs[] | false, alias?: string  } 
+  | { name: 'updatePosition', args?: MutationUpdatePositionArgs[] | false, alias?: string  } 
+  | { name: 'updateManyPositions', args?: MutationUpdateManyPositionsArgs[] | false, alias?: string  } 
+  | { name: 'upsertPosition', args?: MutationUpsertPositionArgs[] | false, alias?: string  } 
+  | { name: 'deletePosition', args?: MutationDeletePositionArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyPositions', args?: MutationDeleteManyPositionsArgs[] | false, alias?: string  } 
 
 type MutationFields =
+  | 'createState'
+  | 'updateState'
+  | 'updateManyStates'
+  | 'upsertState'
+  | 'deleteState'
+  | 'deleteManyStates'
   | 'createUser'
   | 'updateUser'
   | 'updateManyUsers'
@@ -1250,8 +2151,36 @@ type MutationFields =
   | 'upsertFriend'
   | 'deleteFriend'
   | 'deleteManyFriends'
+  | 'createClient'
+  | 'updateClient'
+  | 'updateManyClients'
+  | 'upsertClient'
+  | 'deleteClient'
+  | 'deleteManyClients'
+  | 'createPosition'
+  | 'updatePosition'
+  | 'updateManyPositions'
+  | 'upsertPosition'
+  | 'deletePosition'
+  | 'deleteManyPositions'
 
 
+type MutationCreateStateArgs =
+  | 'data'
+type MutationUpdateStateArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyStatesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertStateArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteStateArgs =
+  | 'where'
+type MutationDeleteManyStatesArgs =
+  | 'where'
 type MutationCreateUserArgs =
   | 'data'
 type MutationUpdateUserArgs =
@@ -1316,9 +2245,119 @@ type MutationDeleteFriendArgs =
   | 'where'
 type MutationDeleteManyFriendsArgs =
   | 'where'
+type MutationCreateClientArgs =
+  | 'data'
+type MutationUpdateClientArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyClientsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertClientArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteClientArgs =
+  | 'where'
+type MutationDeleteManyClientsArgs =
+  | 'where'
+type MutationCreatePositionArgs =
+  | 'data'
+type MutationUpdatePositionArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyPositionsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertPositionArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeletePositionArgs =
+  | 'where'
+type MutationDeleteManyPositionsArgs =
+  | 'where'
   
 
 export interface MutationFieldDetails {
+  createState: {
+    type: 'State'
+    args: Record<MutationCreateStateArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: StateCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.State> | prisma.State
+  }
+  updateState: {
+    type: 'State'
+    args: Record<MutationUpdateStateArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: StateUpdateInput, where: StateWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.State | null> | prisma.State | null
+  }
+  updateManyStates: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyStatesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: StateUpdateManyMutationInput, where?: StateWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertState: {
+    type: 'State'
+    args: Record<MutationUpsertStateArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: StateWhereUniqueInput, create: StateCreateInput, update: StateUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.State> | prisma.State
+  }
+  deleteState: {
+    type: 'State'
+    args: Record<MutationDeleteStateArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: StateWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.State | null> | prisma.State | null
+  }
+  deleteManyStates: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyStatesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: StateWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
   createUser: {
     type: 'User'
     args: Record<MutationCreateUserArgs, core.NexusArgDef<string>>
@@ -1631,6 +2670,162 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
+  createClient: {
+    type: 'Client'
+    args: Record<MutationCreateClientArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: ClientCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Client> | prisma.Client
+  }
+  updateClient: {
+    type: 'Client'
+    args: Record<MutationUpdateClientArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: ClientUpdateInput, where: ClientWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Client | null> | prisma.Client | null
+  }
+  updateManyClients: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyClientsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: ClientUpdateManyMutationInput, where?: ClientWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertClient: {
+    type: 'Client'
+    args: Record<MutationUpsertClientArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: ClientWhereUniqueInput, create: ClientCreateInput, update: ClientUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Client> | prisma.Client
+  }
+  deleteClient: {
+    type: 'Client'
+    args: Record<MutationDeleteClientArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: ClientWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Client | null> | prisma.Client | null
+  }
+  deleteManyClients: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyClientsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: ClientWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createPosition: {
+    type: 'Position'
+    args: Record<MutationCreatePositionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PositionCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Position> | prisma.Position
+  }
+  updatePosition: {
+    type: 'Position'
+    args: Record<MutationUpdatePositionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PositionUpdateInput, where: PositionWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Position | null> | prisma.Position | null
+  }
+  updateManyPositions: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyPositionsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PositionUpdateManyMutationInput, where?: PositionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertPosition: {
+    type: 'Position'
+    args: Record<MutationUpsertPositionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: PositionWhereUniqueInput, create: PositionCreateInput, update: PositionUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Position> | prisma.Position
+  }
+  deletePosition: {
+    type: 'Position'
+    args: Record<MutationDeletePositionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: PositionWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Position | null> | prisma.Position | null
+  }
+  deleteManyPositions: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyPositionsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: PositionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
 }
   
 
@@ -1663,18 +2858,26 @@ export interface BatchPayloadFieldDetails {
 
 type SubscriptionObject =
   | SubscriptionFields
+  | { name: 'state', args?: SubscriptionStateArgs[] | false, alias?: string  } 
   | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
   | { name: 'post', args?: SubscriptionPostArgs[] | false, alias?: string  } 
   | { name: 'hero', args?: SubscriptionHeroArgs[] | false, alias?: string  } 
   | { name: 'friend', args?: SubscriptionFriendArgs[] | false, alias?: string  } 
+  | { name: 'client', args?: SubscriptionClientArgs[] | false, alias?: string  } 
+  | { name: 'position', args?: SubscriptionPositionArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
+  | 'state'
   | 'user'
   | 'post'
   | 'hero'
   | 'friend'
+  | 'client'
+  | 'position'
 
 
+type SubscriptionStateArgs =
+  | 'where'
 type SubscriptionUserArgs =
   | 'where'
 type SubscriptionPostArgs =
@@ -1683,9 +2886,26 @@ type SubscriptionHeroArgs =
   | 'where'
 type SubscriptionFriendArgs =
   | 'where'
+type SubscriptionClientArgs =
+  | 'where'
+type SubscriptionPositionArgs =
+  | 'where'
   
 
 export interface SubscriptionFieldDetails {
+  state: {
+    type: 'StateSubscriptionPayload'
+    args: Record<SubscriptionStateArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: StateSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.StateSubscriptionPayload | null> | prisma.StateSubscriptionPayload | null
+  }
   user: {
     type: 'UserSubscriptionPayload'
     args: Record<SubscriptionUserArgs, core.NexusArgDef<string>>
@@ -1737,6 +2957,147 @@ export interface SubscriptionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.FriendSubscriptionPayload | null> | prisma.FriendSubscriptionPayload | null
+  }
+  client: {
+    type: 'ClientSubscriptionPayload'
+    args: Record<SubscriptionClientArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: ClientSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ClientSubscriptionPayload | null> | prisma.ClientSubscriptionPayload | null
+  }
+  position: {
+    type: 'PositionSubscriptionPayload'
+    args: Record<SubscriptionPositionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: PositionSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PositionSubscriptionPayload | null> | prisma.PositionSubscriptionPayload | null
+  }
+}
+  
+
+// Types for StateSubscriptionPayload
+
+type StateSubscriptionPayloadObject =
+  | StateSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type StateSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface StateSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"StateSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'State'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"StateSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.State | null> | prisma.State | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'StatePreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"StateSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.StatePreviousValues | null> | prisma.StatePreviousValues | null
+  }
+}
+  
+
+// Types for StatePreviousValues
+
+type StatePreviousValuesObject =
+  | StatePreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'abbreviation', args?: [] | false, alias?: string  } 
+
+type StatePreviousValuesFields =
+  | 'id'
+  | 'name'
+  | 'abbreviation'
+
+
+
+  
+
+export interface StatePreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  abbreviation: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
   }
 }
   
@@ -2181,7 +3542,379 @@ export interface FriendPreviousValuesFieldDetails {
 }
   
 
+// Types for ClientSubscriptionPayload
 
+type ClientSubscriptionPayloadObject =
+  | ClientSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type ClientSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface ClientSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"ClientSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Client'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"ClientSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Client | null> | prisma.Client | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'ClientPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"ClientSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ClientPreviousValues | null> | prisma.ClientPreviousValues | null
+  }
+}
+  
+
+// Types for ClientPreviousValues
+
+type ClientPreviousValuesObject =
+  | ClientPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'clientId', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'dba', args?: [] | false, alias?: string  } 
+  | { name: 'address', args?: [] | false, alias?: string  } 
+  | { name: 'city', args?: [] | false, alias?: string  } 
+  | { name: 'zipCode', args?: [] | false, alias?: string  } 
+
+type ClientPreviousValuesFields =
+  | 'id'
+  | 'clientId'
+  | 'name'
+  | 'dba'
+  | 'address'
+  | 'city'
+  | 'zipCode'
+
+
+
+  
+
+export interface ClientPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  clientId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  dba: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  address: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  city: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  zipCode: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for PositionSubscriptionPayload
+
+type PositionSubscriptionPayloadObject =
+  | PositionSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type PositionSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface PositionSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PositionSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Position'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PositionSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Position | null> | prisma.Position | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'PositionPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PositionSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PositionPreviousValues | null> | prisma.PositionPreviousValues | null
+  }
+}
+  
+
+// Types for PositionPreviousValues
+
+type PositionPreviousValuesObject =
+  | PositionPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'code', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+
+type PositionPreviousValuesFields =
+  | 'id'
+  | 'code'
+  | 'name'
+
+
+
+  
+
+export interface PositionPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  code: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+
+export interface StateWhereUniqueInput {
+  id?: string | null
+}
+export type StateWhereUniqueInputInputObject =
+  | Extract<keyof StateWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface StateWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  abbreviation?: string | null
+  abbreviation_not?: string | null
+  abbreviation_in?: string[]
+  abbreviation_not_in?: string[]
+  abbreviation_lt?: string | null
+  abbreviation_lte?: string | null
+  abbreviation_gt?: string | null
+  abbreviation_gte?: string | null
+  abbreviation_contains?: string | null
+  abbreviation_not_contains?: string | null
+  abbreviation_starts_with?: string | null
+  abbreviation_not_starts_with?: string | null
+  abbreviation_ends_with?: string | null
+  abbreviation_not_ends_with?: string | null
+  AND?: StateWhereInput[]
+  OR?: StateWhereInput[]
+  NOT?: StateWhereInput[]
+}
+export type StateWhereInputInputObject =
+  | Extract<keyof StateWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'abbreviation', alias?: string  } 
+  | { name: 'abbreviation_not', alias?: string  } 
+  | { name: 'abbreviation_in', alias?: string  } 
+  | { name: 'abbreviation_not_in', alias?: string  } 
+  | { name: 'abbreviation_lt', alias?: string  } 
+  | { name: 'abbreviation_lte', alias?: string  } 
+  | { name: 'abbreviation_gt', alias?: string  } 
+  | { name: 'abbreviation_gte', alias?: string  } 
+  | { name: 'abbreviation_contains', alias?: string  } 
+  | { name: 'abbreviation_not_contains', alias?: string  } 
+  | { name: 'abbreviation_starts_with', alias?: string  } 
+  | { name: 'abbreviation_not_starts_with', alias?: string  } 
+  | { name: 'abbreviation_ends_with', alias?: string  } 
+  | { name: 'abbreviation_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 export interface UserWhereUniqueInput {
   id?: string | null
   email?: string | null
@@ -2527,6 +4260,367 @@ export interface FriendWhereUniqueInput {
 export type FriendWhereUniqueInputInputObject =
   | Extract<keyof FriendWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
+  
+export interface ClientWhereUniqueInput {
+  id?: string | null
+}
+export type ClientWhereUniqueInputInputObject =
+  | Extract<keyof ClientWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface PositionWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  code?: string | null
+  code_not?: string | null
+  code_in?: string[]
+  code_not_in?: string[]
+  code_lt?: string | null
+  code_lte?: string | null
+  code_gt?: string | null
+  code_gte?: string | null
+  code_contains?: string | null
+  code_not_contains?: string | null
+  code_starts_with?: string | null
+  code_not_starts_with?: string | null
+  code_ends_with?: string | null
+  code_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  clientRef_every?: ClientWhereInput | null
+  clientRef_some?: ClientWhereInput | null
+  clientRef_none?: ClientWhereInput | null
+  AND?: PositionWhereInput[]
+  OR?: PositionWhereInput[]
+  NOT?: PositionWhereInput[]
+}
+export type PositionWhereInputInputObject =
+  | Extract<keyof PositionWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'code', alias?: string  } 
+  | { name: 'code_not', alias?: string  } 
+  | { name: 'code_in', alias?: string  } 
+  | { name: 'code_not_in', alias?: string  } 
+  | { name: 'code_lt', alias?: string  } 
+  | { name: 'code_lte', alias?: string  } 
+  | { name: 'code_gt', alias?: string  } 
+  | { name: 'code_gte', alias?: string  } 
+  | { name: 'code_contains', alias?: string  } 
+  | { name: 'code_not_contains', alias?: string  } 
+  | { name: 'code_starts_with', alias?: string  } 
+  | { name: 'code_not_starts_with', alias?: string  } 
+  | { name: 'code_ends_with', alias?: string  } 
+  | { name: 'code_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'clientRef_every', alias?: string  } 
+  | { name: 'clientRef_some', alias?: string  } 
+  | { name: 'clientRef_none', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface ClientWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  clientId?: string | null
+  clientId_not?: string | null
+  clientId_in?: string[]
+  clientId_not_in?: string[]
+  clientId_lt?: string | null
+  clientId_lte?: string | null
+  clientId_gt?: string | null
+  clientId_gte?: string | null
+  clientId_contains?: string | null
+  clientId_not_contains?: string | null
+  clientId_starts_with?: string | null
+  clientId_not_starts_with?: string | null
+  clientId_ends_with?: string | null
+  clientId_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  dba?: string | null
+  dba_not?: string | null
+  dba_in?: string[]
+  dba_not_in?: string[]
+  dba_lt?: string | null
+  dba_lte?: string | null
+  dba_gt?: string | null
+  dba_gte?: string | null
+  dba_contains?: string | null
+  dba_not_contains?: string | null
+  dba_starts_with?: string | null
+  dba_not_starts_with?: string | null
+  dba_ends_with?: string | null
+  dba_not_ends_with?: string | null
+  address?: string | null
+  address_not?: string | null
+  address_in?: string[]
+  address_not_in?: string[]
+  address_lt?: string | null
+  address_lte?: string | null
+  address_gt?: string | null
+  address_gte?: string | null
+  address_contains?: string | null
+  address_not_contains?: string | null
+  address_starts_with?: string | null
+  address_not_starts_with?: string | null
+  address_ends_with?: string | null
+  address_not_ends_with?: string | null
+  city?: string | null
+  city_not?: string | null
+  city_in?: string[]
+  city_not_in?: string[]
+  city_lt?: string | null
+  city_lte?: string | null
+  city_gt?: string | null
+  city_gte?: string | null
+  city_contains?: string | null
+  city_not_contains?: string | null
+  city_starts_with?: string | null
+  city_not_starts_with?: string | null
+  city_ends_with?: string | null
+  city_not_ends_with?: string | null
+  stateRef?: StateWhereInput | null
+  zipCode?: string | null
+  zipCode_not?: string | null
+  zipCode_in?: string[]
+  zipCode_not_in?: string[]
+  zipCode_lt?: string | null
+  zipCode_lte?: string | null
+  zipCode_gt?: string | null
+  zipCode_gte?: string | null
+  zipCode_contains?: string | null
+  zipCode_not_contains?: string | null
+  zipCode_starts_with?: string | null
+  zipCode_not_starts_with?: string | null
+  zipCode_ends_with?: string | null
+  zipCode_not_ends_with?: string | null
+  positions_every?: PositionWhereInput | null
+  positions_some?: PositionWhereInput | null
+  positions_none?: PositionWhereInput | null
+  AND?: ClientWhereInput[]
+  OR?: ClientWhereInput[]
+  NOT?: ClientWhereInput[]
+}
+export type ClientWhereInputInputObject =
+  | Extract<keyof ClientWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'clientId', alias?: string  } 
+  | { name: 'clientId_not', alias?: string  } 
+  | { name: 'clientId_in', alias?: string  } 
+  | { name: 'clientId_not_in', alias?: string  } 
+  | { name: 'clientId_lt', alias?: string  } 
+  | { name: 'clientId_lte', alias?: string  } 
+  | { name: 'clientId_gt', alias?: string  } 
+  | { name: 'clientId_gte', alias?: string  } 
+  | { name: 'clientId_contains', alias?: string  } 
+  | { name: 'clientId_not_contains', alias?: string  } 
+  | { name: 'clientId_starts_with', alias?: string  } 
+  | { name: 'clientId_not_starts_with', alias?: string  } 
+  | { name: 'clientId_ends_with', alias?: string  } 
+  | { name: 'clientId_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'dba', alias?: string  } 
+  | { name: 'dba_not', alias?: string  } 
+  | { name: 'dba_in', alias?: string  } 
+  | { name: 'dba_not_in', alias?: string  } 
+  | { name: 'dba_lt', alias?: string  } 
+  | { name: 'dba_lte', alias?: string  } 
+  | { name: 'dba_gt', alias?: string  } 
+  | { name: 'dba_gte', alias?: string  } 
+  | { name: 'dba_contains', alias?: string  } 
+  | { name: 'dba_not_contains', alias?: string  } 
+  | { name: 'dba_starts_with', alias?: string  } 
+  | { name: 'dba_not_starts_with', alias?: string  } 
+  | { name: 'dba_ends_with', alias?: string  } 
+  | { name: 'dba_not_ends_with', alias?: string  } 
+  | { name: 'address', alias?: string  } 
+  | { name: 'address_not', alias?: string  } 
+  | { name: 'address_in', alias?: string  } 
+  | { name: 'address_not_in', alias?: string  } 
+  | { name: 'address_lt', alias?: string  } 
+  | { name: 'address_lte', alias?: string  } 
+  | { name: 'address_gt', alias?: string  } 
+  | { name: 'address_gte', alias?: string  } 
+  | { name: 'address_contains', alias?: string  } 
+  | { name: 'address_not_contains', alias?: string  } 
+  | { name: 'address_starts_with', alias?: string  } 
+  | { name: 'address_not_starts_with', alias?: string  } 
+  | { name: 'address_ends_with', alias?: string  } 
+  | { name: 'address_not_ends_with', alias?: string  } 
+  | { name: 'city', alias?: string  } 
+  | { name: 'city_not', alias?: string  } 
+  | { name: 'city_in', alias?: string  } 
+  | { name: 'city_not_in', alias?: string  } 
+  | { name: 'city_lt', alias?: string  } 
+  | { name: 'city_lte', alias?: string  } 
+  | { name: 'city_gt', alias?: string  } 
+  | { name: 'city_gte', alias?: string  } 
+  | { name: 'city_contains', alias?: string  } 
+  | { name: 'city_not_contains', alias?: string  } 
+  | { name: 'city_starts_with', alias?: string  } 
+  | { name: 'city_not_starts_with', alias?: string  } 
+  | { name: 'city_ends_with', alias?: string  } 
+  | { name: 'city_not_ends_with', alias?: string  } 
+  | { name: 'stateRef', alias?: string  } 
+  | { name: 'zipCode', alias?: string  } 
+  | { name: 'zipCode_not', alias?: string  } 
+  | { name: 'zipCode_in', alias?: string  } 
+  | { name: 'zipCode_not_in', alias?: string  } 
+  | { name: 'zipCode_lt', alias?: string  } 
+  | { name: 'zipCode_lte', alias?: string  } 
+  | { name: 'zipCode_gt', alias?: string  } 
+  | { name: 'zipCode_gte', alias?: string  } 
+  | { name: 'zipCode_contains', alias?: string  } 
+  | { name: 'zipCode_not_contains', alias?: string  } 
+  | { name: 'zipCode_starts_with', alias?: string  } 
+  | { name: 'zipCode_not_starts_with', alias?: string  } 
+  | { name: 'zipCode_ends_with', alias?: string  } 
+  | { name: 'zipCode_not_ends_with', alias?: string  } 
+  | { name: 'positions_every', alias?: string  } 
+  | { name: 'positions_some', alias?: string  } 
+  | { name: 'positions_none', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface PositionWhereUniqueInput {
+  id?: string | null
+  code?: string | null
+}
+export type PositionWhereUniqueInputInputObject =
+  | Extract<keyof PositionWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'code', alias?: string  } 
+  
+export interface StateCreateInput {
+  id?: string | null
+  name?: string
+  abbreviation?: string
+}
+export type StateCreateInputInputObject =
+  | Extract<keyof StateCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'abbreviation', alias?: string  } 
+  
+export interface StateUpdateInput {
+  name?: string | null
+  abbreviation?: string | null
+}
+export type StateUpdateInputInputObject =
+  | Extract<keyof StateUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'abbreviation', alias?: string  } 
+  
+export interface StateUpdateManyMutationInput {
+  name?: string | null
+  abbreviation?: string | null
+}
+export type StateUpdateManyMutationInputInputObject =
+  | Extract<keyof StateUpdateManyMutationInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'abbreviation', alias?: string  } 
   
 export interface UserCreateInput {
   id?: string | null
@@ -3066,6 +5160,671 @@ export type FriendUpdateManyMutationInputInputObject =
   | Extract<keyof FriendUpdateManyMutationInput, string>
   | { name: 'name', alias?: string  } 
   
+export interface ClientCreateInput {
+  id?: string | null
+  clientId?: string
+  name?: string
+  dba?: string | null
+  address?: string
+  city?: string
+  stateRef?: StateCreateOneInput
+  zipCode?: string
+  positions?: PositionCreateManyWithoutClientRefInput | null
+}
+export type ClientCreateInputInputObject =
+  | Extract<keyof ClientCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'clientId', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'dba', alias?: string  } 
+  | { name: 'address', alias?: string  } 
+  | { name: 'city', alias?: string  } 
+  | { name: 'stateRef', alias?: string  } 
+  | { name: 'zipCode', alias?: string  } 
+  | { name: 'positions', alias?: string  } 
+  
+export interface StateCreateOneInput {
+  create?: StateCreateInput | null
+  connect?: StateWhereUniqueInput | null
+}
+export type StateCreateOneInputInputObject =
+  | Extract<keyof StateCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface PositionCreateManyWithoutClientRefInput {
+  create?: PositionCreateWithoutClientRefInput[]
+  connect?: PositionWhereUniqueInput[]
+}
+export type PositionCreateManyWithoutClientRefInputInputObject =
+  | Extract<keyof PositionCreateManyWithoutClientRefInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface PositionCreateWithoutClientRefInput {
+  id?: string | null
+  code?: string
+  name?: string
+}
+export type PositionCreateWithoutClientRefInputInputObject =
+  | Extract<keyof PositionCreateWithoutClientRefInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'code', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  
+export interface ClientUpdateInput {
+  clientId?: string | null
+  name?: string | null
+  dba?: string | null
+  address?: string | null
+  city?: string | null
+  stateRef?: StateUpdateOneRequiredInput | null
+  zipCode?: string | null
+  positions?: PositionUpdateManyWithoutClientRefInput | null
+}
+export type ClientUpdateInputInputObject =
+  | Extract<keyof ClientUpdateInput, string>
+  | { name: 'clientId', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'dba', alias?: string  } 
+  | { name: 'address', alias?: string  } 
+  | { name: 'city', alias?: string  } 
+  | { name: 'stateRef', alias?: string  } 
+  | { name: 'zipCode', alias?: string  } 
+  | { name: 'positions', alias?: string  } 
+  
+export interface StateUpdateOneRequiredInput {
+  create?: StateCreateInput | null
+  update?: StateUpdateDataInput | null
+  upsert?: StateUpsertNestedInput | null
+  connect?: StateWhereUniqueInput | null
+}
+export type StateUpdateOneRequiredInputInputObject =
+  | Extract<keyof StateUpdateOneRequiredInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface StateUpdateDataInput {
+  name?: string | null
+  abbreviation?: string | null
+}
+export type StateUpdateDataInputInputObject =
+  | Extract<keyof StateUpdateDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'abbreviation', alias?: string  } 
+  
+export interface StateUpsertNestedInput {
+  update?: StateUpdateDataInput
+  create?: StateCreateInput
+}
+export type StateUpsertNestedInputInputObject =
+  | Extract<keyof StateUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface PositionUpdateManyWithoutClientRefInput {
+  create?: PositionCreateWithoutClientRefInput[]
+  delete?: PositionWhereUniqueInput[]
+  connect?: PositionWhereUniqueInput[]
+  set?: PositionWhereUniqueInput[]
+  disconnect?: PositionWhereUniqueInput[]
+  update?: PositionUpdateWithWhereUniqueWithoutClientRefInput[]
+  upsert?: PositionUpsertWithWhereUniqueWithoutClientRefInput[]
+  deleteMany?: PositionScalarWhereInput[]
+  updateMany?: PositionUpdateManyWithWhereNestedInput[]
+}
+export type PositionUpdateManyWithoutClientRefInputInputObject =
+  | Extract<keyof PositionUpdateManyWithoutClientRefInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface PositionUpdateWithWhereUniqueWithoutClientRefInput {
+  where?: PositionWhereUniqueInput
+  data?: PositionUpdateWithoutClientRefDataInput
+}
+export type PositionUpdateWithWhereUniqueWithoutClientRefInputInputObject =
+  | Extract<keyof PositionUpdateWithWhereUniqueWithoutClientRefInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface PositionUpdateWithoutClientRefDataInput {
+  code?: string | null
+  name?: string | null
+}
+export type PositionUpdateWithoutClientRefDataInputInputObject =
+  | Extract<keyof PositionUpdateWithoutClientRefDataInput, string>
+  | { name: 'code', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  
+export interface PositionUpsertWithWhereUniqueWithoutClientRefInput {
+  where?: PositionWhereUniqueInput
+  update?: PositionUpdateWithoutClientRefDataInput
+  create?: PositionCreateWithoutClientRefInput
+}
+export type PositionUpsertWithWhereUniqueWithoutClientRefInputInputObject =
+  | Extract<keyof PositionUpsertWithWhereUniqueWithoutClientRefInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface PositionScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  code?: string | null
+  code_not?: string | null
+  code_in?: string[]
+  code_not_in?: string[]
+  code_lt?: string | null
+  code_lte?: string | null
+  code_gt?: string | null
+  code_gte?: string | null
+  code_contains?: string | null
+  code_not_contains?: string | null
+  code_starts_with?: string | null
+  code_not_starts_with?: string | null
+  code_ends_with?: string | null
+  code_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  AND?: PositionScalarWhereInput[]
+  OR?: PositionScalarWhereInput[]
+  NOT?: PositionScalarWhereInput[]
+}
+export type PositionScalarWhereInputInputObject =
+  | Extract<keyof PositionScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'code', alias?: string  } 
+  | { name: 'code_not', alias?: string  } 
+  | { name: 'code_in', alias?: string  } 
+  | { name: 'code_not_in', alias?: string  } 
+  | { name: 'code_lt', alias?: string  } 
+  | { name: 'code_lte', alias?: string  } 
+  | { name: 'code_gt', alias?: string  } 
+  | { name: 'code_gte', alias?: string  } 
+  | { name: 'code_contains', alias?: string  } 
+  | { name: 'code_not_contains', alias?: string  } 
+  | { name: 'code_starts_with', alias?: string  } 
+  | { name: 'code_not_starts_with', alias?: string  } 
+  | { name: 'code_ends_with', alias?: string  } 
+  | { name: 'code_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface PositionUpdateManyWithWhereNestedInput {
+  where?: PositionScalarWhereInput
+  data?: PositionUpdateManyDataInput
+}
+export type PositionUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof PositionUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface PositionUpdateManyDataInput {
+  code?: string | null
+  name?: string | null
+}
+export type PositionUpdateManyDataInputInputObject =
+  | Extract<keyof PositionUpdateManyDataInput, string>
+  | { name: 'code', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  
+export interface ClientUpdateManyMutationInput {
+  clientId?: string | null
+  name?: string | null
+  dba?: string | null
+  address?: string | null
+  city?: string | null
+  zipCode?: string | null
+}
+export type ClientUpdateManyMutationInputInputObject =
+  | Extract<keyof ClientUpdateManyMutationInput, string>
+  | { name: 'clientId', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'dba', alias?: string  } 
+  | { name: 'address', alias?: string  } 
+  | { name: 'city', alias?: string  } 
+  | { name: 'zipCode', alias?: string  } 
+  
+export interface PositionCreateInput {
+  id?: string | null
+  code?: string
+  name?: string
+  clientRef?: ClientCreateManyWithoutPositionsInput | null
+}
+export type PositionCreateInputInputObject =
+  | Extract<keyof PositionCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'code', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'clientRef', alias?: string  } 
+  
+export interface ClientCreateManyWithoutPositionsInput {
+  create?: ClientCreateWithoutPositionsInput[]
+  connect?: ClientWhereUniqueInput[]
+}
+export type ClientCreateManyWithoutPositionsInputInputObject =
+  | Extract<keyof ClientCreateManyWithoutPositionsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface ClientCreateWithoutPositionsInput {
+  id?: string | null
+  clientId?: string
+  name?: string
+  dba?: string | null
+  address?: string
+  city?: string
+  stateRef?: StateCreateOneInput
+  zipCode?: string
+}
+export type ClientCreateWithoutPositionsInputInputObject =
+  | Extract<keyof ClientCreateWithoutPositionsInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'clientId', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'dba', alias?: string  } 
+  | { name: 'address', alias?: string  } 
+  | { name: 'city', alias?: string  } 
+  | { name: 'stateRef', alias?: string  } 
+  | { name: 'zipCode', alias?: string  } 
+  
+export interface PositionUpdateInput {
+  code?: string | null
+  name?: string | null
+  clientRef?: ClientUpdateManyWithoutPositionsInput | null
+}
+export type PositionUpdateInputInputObject =
+  | Extract<keyof PositionUpdateInput, string>
+  | { name: 'code', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'clientRef', alias?: string  } 
+  
+export interface ClientUpdateManyWithoutPositionsInput {
+  create?: ClientCreateWithoutPositionsInput[]
+  delete?: ClientWhereUniqueInput[]
+  connect?: ClientWhereUniqueInput[]
+  set?: ClientWhereUniqueInput[]
+  disconnect?: ClientWhereUniqueInput[]
+  update?: ClientUpdateWithWhereUniqueWithoutPositionsInput[]
+  upsert?: ClientUpsertWithWhereUniqueWithoutPositionsInput[]
+  deleteMany?: ClientScalarWhereInput[]
+  updateMany?: ClientUpdateManyWithWhereNestedInput[]
+}
+export type ClientUpdateManyWithoutPositionsInputInputObject =
+  | Extract<keyof ClientUpdateManyWithoutPositionsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface ClientUpdateWithWhereUniqueWithoutPositionsInput {
+  where?: ClientWhereUniqueInput
+  data?: ClientUpdateWithoutPositionsDataInput
+}
+export type ClientUpdateWithWhereUniqueWithoutPositionsInputInputObject =
+  | Extract<keyof ClientUpdateWithWhereUniqueWithoutPositionsInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface ClientUpdateWithoutPositionsDataInput {
+  clientId?: string | null
+  name?: string | null
+  dba?: string | null
+  address?: string | null
+  city?: string | null
+  stateRef?: StateUpdateOneRequiredInput | null
+  zipCode?: string | null
+}
+export type ClientUpdateWithoutPositionsDataInputInputObject =
+  | Extract<keyof ClientUpdateWithoutPositionsDataInput, string>
+  | { name: 'clientId', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'dba', alias?: string  } 
+  | { name: 'address', alias?: string  } 
+  | { name: 'city', alias?: string  } 
+  | { name: 'stateRef', alias?: string  } 
+  | { name: 'zipCode', alias?: string  } 
+  
+export interface ClientUpsertWithWhereUniqueWithoutPositionsInput {
+  where?: ClientWhereUniqueInput
+  update?: ClientUpdateWithoutPositionsDataInput
+  create?: ClientCreateWithoutPositionsInput
+}
+export type ClientUpsertWithWhereUniqueWithoutPositionsInputInputObject =
+  | Extract<keyof ClientUpsertWithWhereUniqueWithoutPositionsInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface ClientScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  clientId?: string | null
+  clientId_not?: string | null
+  clientId_in?: string[]
+  clientId_not_in?: string[]
+  clientId_lt?: string | null
+  clientId_lte?: string | null
+  clientId_gt?: string | null
+  clientId_gte?: string | null
+  clientId_contains?: string | null
+  clientId_not_contains?: string | null
+  clientId_starts_with?: string | null
+  clientId_not_starts_with?: string | null
+  clientId_ends_with?: string | null
+  clientId_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  dba?: string | null
+  dba_not?: string | null
+  dba_in?: string[]
+  dba_not_in?: string[]
+  dba_lt?: string | null
+  dba_lte?: string | null
+  dba_gt?: string | null
+  dba_gte?: string | null
+  dba_contains?: string | null
+  dba_not_contains?: string | null
+  dba_starts_with?: string | null
+  dba_not_starts_with?: string | null
+  dba_ends_with?: string | null
+  dba_not_ends_with?: string | null
+  address?: string | null
+  address_not?: string | null
+  address_in?: string[]
+  address_not_in?: string[]
+  address_lt?: string | null
+  address_lte?: string | null
+  address_gt?: string | null
+  address_gte?: string | null
+  address_contains?: string | null
+  address_not_contains?: string | null
+  address_starts_with?: string | null
+  address_not_starts_with?: string | null
+  address_ends_with?: string | null
+  address_not_ends_with?: string | null
+  city?: string | null
+  city_not?: string | null
+  city_in?: string[]
+  city_not_in?: string[]
+  city_lt?: string | null
+  city_lte?: string | null
+  city_gt?: string | null
+  city_gte?: string | null
+  city_contains?: string | null
+  city_not_contains?: string | null
+  city_starts_with?: string | null
+  city_not_starts_with?: string | null
+  city_ends_with?: string | null
+  city_not_ends_with?: string | null
+  zipCode?: string | null
+  zipCode_not?: string | null
+  zipCode_in?: string[]
+  zipCode_not_in?: string[]
+  zipCode_lt?: string | null
+  zipCode_lte?: string | null
+  zipCode_gt?: string | null
+  zipCode_gte?: string | null
+  zipCode_contains?: string | null
+  zipCode_not_contains?: string | null
+  zipCode_starts_with?: string | null
+  zipCode_not_starts_with?: string | null
+  zipCode_ends_with?: string | null
+  zipCode_not_ends_with?: string | null
+  AND?: ClientScalarWhereInput[]
+  OR?: ClientScalarWhereInput[]
+  NOT?: ClientScalarWhereInput[]
+}
+export type ClientScalarWhereInputInputObject =
+  | Extract<keyof ClientScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'clientId', alias?: string  } 
+  | { name: 'clientId_not', alias?: string  } 
+  | { name: 'clientId_in', alias?: string  } 
+  | { name: 'clientId_not_in', alias?: string  } 
+  | { name: 'clientId_lt', alias?: string  } 
+  | { name: 'clientId_lte', alias?: string  } 
+  | { name: 'clientId_gt', alias?: string  } 
+  | { name: 'clientId_gte', alias?: string  } 
+  | { name: 'clientId_contains', alias?: string  } 
+  | { name: 'clientId_not_contains', alias?: string  } 
+  | { name: 'clientId_starts_with', alias?: string  } 
+  | { name: 'clientId_not_starts_with', alias?: string  } 
+  | { name: 'clientId_ends_with', alias?: string  } 
+  | { name: 'clientId_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'dba', alias?: string  } 
+  | { name: 'dba_not', alias?: string  } 
+  | { name: 'dba_in', alias?: string  } 
+  | { name: 'dba_not_in', alias?: string  } 
+  | { name: 'dba_lt', alias?: string  } 
+  | { name: 'dba_lte', alias?: string  } 
+  | { name: 'dba_gt', alias?: string  } 
+  | { name: 'dba_gte', alias?: string  } 
+  | { name: 'dba_contains', alias?: string  } 
+  | { name: 'dba_not_contains', alias?: string  } 
+  | { name: 'dba_starts_with', alias?: string  } 
+  | { name: 'dba_not_starts_with', alias?: string  } 
+  | { name: 'dba_ends_with', alias?: string  } 
+  | { name: 'dba_not_ends_with', alias?: string  } 
+  | { name: 'address', alias?: string  } 
+  | { name: 'address_not', alias?: string  } 
+  | { name: 'address_in', alias?: string  } 
+  | { name: 'address_not_in', alias?: string  } 
+  | { name: 'address_lt', alias?: string  } 
+  | { name: 'address_lte', alias?: string  } 
+  | { name: 'address_gt', alias?: string  } 
+  | { name: 'address_gte', alias?: string  } 
+  | { name: 'address_contains', alias?: string  } 
+  | { name: 'address_not_contains', alias?: string  } 
+  | { name: 'address_starts_with', alias?: string  } 
+  | { name: 'address_not_starts_with', alias?: string  } 
+  | { name: 'address_ends_with', alias?: string  } 
+  | { name: 'address_not_ends_with', alias?: string  } 
+  | { name: 'city', alias?: string  } 
+  | { name: 'city_not', alias?: string  } 
+  | { name: 'city_in', alias?: string  } 
+  | { name: 'city_not_in', alias?: string  } 
+  | { name: 'city_lt', alias?: string  } 
+  | { name: 'city_lte', alias?: string  } 
+  | { name: 'city_gt', alias?: string  } 
+  | { name: 'city_gte', alias?: string  } 
+  | { name: 'city_contains', alias?: string  } 
+  | { name: 'city_not_contains', alias?: string  } 
+  | { name: 'city_starts_with', alias?: string  } 
+  | { name: 'city_not_starts_with', alias?: string  } 
+  | { name: 'city_ends_with', alias?: string  } 
+  | { name: 'city_not_ends_with', alias?: string  } 
+  | { name: 'zipCode', alias?: string  } 
+  | { name: 'zipCode_not', alias?: string  } 
+  | { name: 'zipCode_in', alias?: string  } 
+  | { name: 'zipCode_not_in', alias?: string  } 
+  | { name: 'zipCode_lt', alias?: string  } 
+  | { name: 'zipCode_lte', alias?: string  } 
+  | { name: 'zipCode_gt', alias?: string  } 
+  | { name: 'zipCode_gte', alias?: string  } 
+  | { name: 'zipCode_contains', alias?: string  } 
+  | { name: 'zipCode_not_contains', alias?: string  } 
+  | { name: 'zipCode_starts_with', alias?: string  } 
+  | { name: 'zipCode_not_starts_with', alias?: string  } 
+  | { name: 'zipCode_ends_with', alias?: string  } 
+  | { name: 'zipCode_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface ClientUpdateManyWithWhereNestedInput {
+  where?: ClientScalarWhereInput
+  data?: ClientUpdateManyDataInput
+}
+export type ClientUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof ClientUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface ClientUpdateManyDataInput {
+  clientId?: string | null
+  name?: string | null
+  dba?: string | null
+  address?: string | null
+  city?: string | null
+  zipCode?: string | null
+}
+export type ClientUpdateManyDataInputInputObject =
+  | Extract<keyof ClientUpdateManyDataInput, string>
+  | { name: 'clientId', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'dba', alias?: string  } 
+  | { name: 'address', alias?: string  } 
+  | { name: 'city', alias?: string  } 
+  | { name: 'zipCode', alias?: string  } 
+  
+export interface PositionUpdateManyMutationInput {
+  code?: string | null
+  name?: string | null
+}
+export type PositionUpdateManyMutationInputInputObject =
+  | Extract<keyof PositionUpdateManyMutationInput, string>
+  | { name: 'code', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  
+export interface StateSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: StateWhereInput | null
+  AND?: StateSubscriptionWhereInput[]
+  OR?: StateSubscriptionWhereInput[]
+  NOT?: StateSubscriptionWhereInput[]
+}
+export type StateSubscriptionWhereInputInputObject =
+  | Extract<keyof StateSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -3150,7 +5909,61 @@ export type FriendSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
+export interface ClientSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: ClientWhereInput | null
+  AND?: ClientSubscriptionWhereInput[]
+  OR?: ClientSubscriptionWhereInput[]
+  NOT?: ClientSubscriptionWhereInput[]
+}
+export type ClientSubscriptionWhereInputInputObject =
+  | Extract<keyof ClientSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface PositionSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: PositionWhereInput | null
+  AND?: PositionSubscriptionWhereInput[]
+  OR?: PositionSubscriptionWhereInput[]
+  NOT?: PositionSubscriptionWhereInput[]
+}
+export type PositionSubscriptionWhereInputInputObject =
+  | Extract<keyof PositionSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 
+export type StateOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'abbreviation_ASC'
+  | 'abbreviation_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
 export type PostOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -3190,6 +6003,38 @@ export type HeroOrderByInputValues =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type PositionOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'code_ASC'
+  | 'code_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type ClientOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'clientId_ASC'
+  | 'clientId_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'dba_ASC'
+  | 'dba_DESC'
+  | 'address_ASC'
+  | 'address_DESC'
+  | 'city_ASC'
+  | 'city_DESC'
+  | 'zipCode_ASC'
+  | 'zipCode_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

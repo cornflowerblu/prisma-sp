@@ -1,0 +1,18 @@
+type Client {
+    id: ID! @id
+    clientId: String!
+    name: String!
+    dba: String
+    address: String!
+    city: String!
+    stateRef: State! @relation(link: INLINE)
+    zipCode: String!
+    positions: [Position!]!
+}
+
+type Position {
+    id: ID! @id
+    code: ID! @unique
+    name: String!
+    clientRef: [Client!]!
+}
