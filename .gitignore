@@ -1,0 +1,7 @@
+
+# Secrets
+.env
+
+# Generated files / folders
+generated/prisma-client/
+node_modules
