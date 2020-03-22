@@ -1,0 +1,45 @@
+query publishedPosts {
+  feed {
+    id
+    title
+    published
+    author {
+      id
+      name
+      email
+    }
+  }
+}
+
+query publishedPostsByUser {
+  postsByUser(email: "roger.urich@shiftpixy.com") {
+    id
+    title
+    published
+  }
+}
+
+mutation createDraft {
+  createDraft(
+    title: "My first mutated post!"
+    authorId: "ck81enkkf000z0773zwbj34a9"
+  ) {
+    id
+    title
+    author {
+      name
+    }
+    published
+  }
+}
+
+mutation publishDraft {
+  publish(id: "ck829l6nu008707754d83kvz2") {
+    id
+    title
+    published
+    author {
+      name
+    }
+  }
+}

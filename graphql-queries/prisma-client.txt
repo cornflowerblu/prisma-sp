@@ -1,0 +1,48 @@
+query allPosts {
+  posts {
+    published
+    title
+    author {
+      name
+      email
+    }
+  }
+}
+
+query publishedPosts {
+  posts(where:{published:true}) {
+    title
+    author {
+      name
+    }
+  }
+}
+
+query postByEmail {
+  user(where: { email: "roger.urich@shiftpixy.com" }) {
+    posts {
+      id
+      published
+      title
+    }
+  }
+}
+
+query allUsers {
+  users {
+    id
+    name
+    email
+  }
+}
+
+query heroesAndFriends {
+  heroes {
+    id
+    name
+    friends {
+      id
+      name
+    }
+  }
+}
