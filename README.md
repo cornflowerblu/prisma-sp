@@ -1,4 +1,4 @@
-# prisma-sp
+# Prisma Implementation Exercise
 The purpose of this project is to explore the setup of a graphql server using the following tools:
 - Prisma client
 - Postgress (RDS Instance)
