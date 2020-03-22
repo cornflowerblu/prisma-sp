@@ -23,5 +23,9 @@ query oneClient {
       name
       abbreviation
     }
+    positions {
+      id
+      name
+    }
   }
 }
